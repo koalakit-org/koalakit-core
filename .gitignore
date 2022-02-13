@@ -1,18 +1,53 @@
-# Build and Release Folders
-bin-debug/
-bin-release/
-[Oo]bj/
-[Bb]in/
+#Ignore thumbnails created by Windows
+Thumbs.db
 
-# Other files and folders
-.settings/
+#Ignore files built by Visual Studio
+*.obj
+*.exe
+*.pdb
+*.user
+*.aps
+*.pch
+*.vspscc
+*_i.c
+*_p.c
+*.ncb
+*.suo
+*.tlb
+*.tlh
+*.bak
+*.cache
+*.ilk
+*.log
+[Bb]in
+[Dd]ebug*/
+*.lib
+*.sbr
+obj/
+[Rr]elease*/
+_ReSharper*/
+[Tt]est[Rr]esult*
+.vs/
 
-# Executables
-*.swf
-*.air
-*.ipa
-*.apk
+#Nuget packages folder
+packages/
 
-# Project files, i.e. `.project`, `.actionScriptProperties` and `.flexProperties`
-# should NOT be excluded as they contain compiler settings and other important
-# information for Eclipse / Flash Builder.
+#Ignore git-related files
+*.orig
+
+#Rider
+.idea
+
+#wwwroot
+wwwroot/
+
+#npm
+node_modules/
+.babelrc
+.stylelintrc.yml
+.eslintrc.yml
+
+#github
+.github/
+
+App_Data/
