@@ -7,6 +7,6 @@ namespace KoalaKit.Modules
     internal interface IKoalaModule
     {
         void ConfigureApp(IApplicationBuilder app);
-        void ConfigureKoala(KoalaOptionsBuilder koala, IConfiguration configuration);
+        void ConfigureKoala(KoalaOptionsBuilder koala);
     }
 }
