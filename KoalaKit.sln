@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32112.339
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{0E996A6B-3A49-4C0C-82DC-F8E13B940141}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "core", "core", "{4B5692FC-DBD8-44FD-BD90-FCAB5074435F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KoalaKit.Abstractions", "src\core\KoalaKit.Abstractions\KoalaKit.Abstractions.csproj", "{B53DFB6A-0C0F-429E-9E48-B8601F9540CC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B53DFB6A-0C0F-429E-9E48-B8601F9540CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B53DFB6A-0C0F-429E-9E48-B8601F9540CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B53DFB6A-0C0F-429E-9E48-B8601F9540CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B53DFB6A-0C0F-429E-9E48-B8601F9540CC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4B5692FC-DBD8-44FD-BD90-FCAB5074435F} = {0E996A6B-3A49-4C0C-82DC-F8E13B940141}
+		{B53DFB6A-0C0F-429E-9E48-B8601F9540CC} = {4B5692FC-DBD8-44FD-BD90-FCAB5074435F}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3CD0F0D3-7D75-4E79-AFB4-7FA03F34D0AF}
+	EndGlobalSection
+EndGlobal
