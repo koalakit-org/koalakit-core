@@ -8,12 +8,12 @@ namespace KoalaKit.Options
         public KoalaOptionsBuilder(IServiceCollection services, IConfiguration configuration)
         {
             Configuration = configuration;
-            KoalaOptions = new KoalaOptions();
+            Options = new KoalaOptions();
             Services = services;
         }
 
         public IConfiguration Configuration;
-        public KoalaOptions KoalaOptions { get; }
+        public KoalaOptions Options { get; }
         public IServiceCollection Services { get; }
     }
 }

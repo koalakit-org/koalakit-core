@@ -1,6 +1,5 @@
 ﻿using KoalaKit.Options;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.Configuration;
 
 namespace KoalaKit.Modules
 {
@@ -10,7 +9,7 @@ namespace KoalaKit.Modules
         {
         }
 
-        public virtual void ConfigureKoala(KoalaOptionsBuilder koala, IConfiguration configuration)
+        public virtual void ConfigureKoala(KoalaOptionsBuilder koala)
         {
         }
     }
