@@ -4,7 +4,6 @@ namespace KoalaKit.Persistence.EFCore
 {
     public class KoalaDbContext : DbContext
     {
-        //TODO: make it changeable.
         private const string DefaultSchema = "Koala";
         private const string DefaultMigrationsHistoryTable = "__EFMigrationsHistory";
         public KoalaDbContext(DbContextOptions options) : base(options) { }
