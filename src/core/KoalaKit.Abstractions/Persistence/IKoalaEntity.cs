@@ -1,6 +1,6 @@
 ﻿namespace KoalaKit.Persistence
 {
-    internal interface IKoalaEntity
+    public interface IKoalaEntity
     {
         int Id { get; set; }
     }
