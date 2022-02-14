@@ -13,7 +13,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "persistence", "persistence"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "efcore", "efcore", "{6476293F-CDBD-409D-9442-C916FA735320}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KoalaKit.Persistence.EntityFramework.Core", "src\persistence\KoalaKit.Persistence.EntityFramework.Core\KoalaKit.Persistence.EntityFramework.Core.csproj", "{768F99C6-CBB3-451E-8CE2-24600461D2BB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KoalaKit.Persistence.EntityFramework.Core", "src\persistence\KoalaKit.Persistence.EntityFramework.Core\KoalaKit.Persistence.EntityFramework.Core.csproj", "{768F99C6-CBB3-451E-8CE2-24600461D2BB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KoalaKit.Persistence.EntityFramework.SqlServer", "src\persistence\KoalaKit.Persistence.EntityFramework.SqlServer\KoalaKit.Persistence.EntityFramework.SqlServer.csproj", "{45EB8030-AC60-4C23-A67F-DDE59CB5F13C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,6 +31,10 @@ Global
 		{768F99C6-CBB3-451E-8CE2-24600461D2BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{768F99C6-CBB3-451E-8CE2-24600461D2BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{768F99C6-CBB3-451E-8CE2-24600461D2BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45EB8030-AC60-4C23-A67F-DDE59CB5F13C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45EB8030-AC60-4C23-A67F-DDE59CB5F13C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45EB8030-AC60-4C23-A67F-DDE59CB5F13C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45EB8030-AC60-4C23-A67F-DDE59CB5F13C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -39,6 +45,7 @@ Global
 		{08D49CFC-A317-4690-80BA-D968ACC2EC9A} = {0E996A6B-3A49-4C0C-82DC-F8E13B940141}
 		{6476293F-CDBD-409D-9442-C916FA735320} = {08D49CFC-A317-4690-80BA-D968ACC2EC9A}
 		{768F99C6-CBB3-451E-8CE2-24600461D2BB} = {6476293F-CDBD-409D-9442-C916FA735320}
+		{45EB8030-AC60-4C23-A67F-DDE59CB5F13C} = {6476293F-CDBD-409D-9442-C916FA735320}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3CD0F0D3-7D75-4E79-AFB4-7FA03F34D0AF}

@@ -6,7 +6,7 @@ using Microsoft.Extensions.Configuration;
 
 namespace KoalaKit.Persistence.EFCore
 {
-    public abstract class EntityFrameworkCoreModuleBase : KoalaModuleBase
+    public abstract class EfCoreModuleBase : KoalaModuleBase
     {
         protected abstract string ProviderName { get; }
         public override void ConfigureKoala(KoalaOptionsBuilder koala)
