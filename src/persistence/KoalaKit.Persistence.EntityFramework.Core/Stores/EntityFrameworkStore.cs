@@ -1,11 +1,13 @@
-﻿using KoalaKit.Persistence.Specifications;
+﻿using System.Linq.Expressions;
+using EFCore.BulkExtensions;
+using KoalaKit.Persistence.Specifications;
 using Microsoft.EntityFrameworkCore;
 
 
 // ReSharper disable once CheckNamespace
 namespace KoalaKit.Persistence.EFCore
 {
-    internal abstract class EntityFrameworkStore<TEntity, TContext> : IStore<TEntity>
+    public abstract class EntityFrameworkStore<TEntity, TContext> : IStore<TEntity>
     where TEntity : class, IKoalaEntity
     where TContext : KoalaDbContext
     {
@@ -16,49 +18,96 @@ namespace KoalaKit.Persistence.EFCore
             this.dbContextFactory = dbContextFactory;
         }
 
-        public Task<TEntity> AddAsync(TEntity entity, CancellationToken cancellationToken = default)
+        public async Task<TEntity> AddAsync(TEntity entity, CancellationToken cancellationToken = default)
         {
-            throw new NotImplementedException();
+            return await DoWork(async dbContext =>
+            {
+                var result = await dbContext.Set<TEntity>().AddAsync(entity, cancellationToken);
+                return result.Entity;
+            }, cancellationToken);
         }
 
-        public Task AddManyAsync(IEnumerable<TEntity> entities, CancellationToken cancellationToken = default)
+        public async Task AddManyAsync(IEnumerable<TEntity> entities, CancellationToken cancellationToken = default)
         {
-            throw new NotImplementedException();
+            await DoWork(async dbContext =>
+            {
+                await dbContext.Set<TEntity>().AddRangeAsync(entities, cancellationToken);
+            }, cancellationToken);
         }
 
-        public Task<int> CountAsync(ISpecification<TEntity> specification, CancellationToken cancellationToken = default)
+        public async Task<int> CountAsync(ISpecification<TEntity> specification, CancellationToken cancellationToken = default)
         {
-            throw new NotImplementedException();
+            return await DoWork(async dbContext =>
+            {
+                var count = await dbContext.Set<TEntity>().CountAsync(MapSpecification(specification), cancellationToken);
+                return count;
+            }, cancellationToken);
         }
 
-        public Task DeleteAsync(int id, CancellationToken cancellationToken = default)
+        public async Task DeleteAsync(int id, CancellationToken cancellationToken = default)
         {
-            throw new NotImplementedException();
+            await DoWork(async dbContext =>
+            {
+                var query = dbContext.Set<TEntity>().AsQueryable().Where(e => e.Id == id);
+                await query.BatchDeleteAsync(cancellationToken);
+            }, cancellationToken);
         }
 
-        public Task DeleteManyAsync(ISpecification<TEntity> specification, CancellationToken cancellationToken = default)
+        public async Task DeleteManyAsync(ISpecification<TEntity> specification, CancellationToken cancellationToken = default)
         {
-            throw new NotImplementedException();
+            await DoWork(async dbContext =>
+            {
+                var query = dbContext.Set<TEntity>().AsQueryable()
+                    .Where(MapSpecification(specification));
+                await query.BatchDeleteAsync(cancellationToken);
+            }, cancellationToken);
         }
 
-        public Task<TEntity?> FindAsync(ISpecification<TEntity> specification, CancellationToken cancellationToken = default)
+        public async Task<TEntity?> FindAsync(ISpecification<TEntity> specification, CancellationToken cancellationToken = default)
         {
-            throw new NotImplementedException();
+            return await DoWork(async dbContext =>
+            {
+                var result = await dbContext.Set<TEntity>().FirstOrDefaultAsync(MapSpecification(specification));
+                return result;
+            }, cancellationToken);
         }
 
-        public Task<TResult?> FindAsync<TResult>(ISpecification<TEntity> specification, CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<TEntity>> ListAsync(ISpecification<TEntity> specification, CancellationToken cancellationToken = default)
         {
-            throw new NotImplementedException();
+            return await DoWork(async dbContext =>
+            {
+                var query = dbContext.Set<TEntity>().AsQueryable();
+                return await query.Where(MapSpecification(specification)).ToListAsync<TEntity>(cancellationToken);
+            }, cancellationToken);
         }
 
-        public Task<IEnumerable<TEntity>> ListAsync(ISpecification<TEntity> specification, CancellationToken cancellationToken = default)
+        public async Task UpdateAsync(ISpecification<TEntity> specification, TEntity entity, CancellationToken cancellationToken = default)
         {
-            throw new NotImplementedException();
+            await DoWork(async dbContext =>
+            {
+                var modelToUpdate = await dbContext.Set<TEntity>().SingleOrDefaultAsync(MapSpecification(specification));
+                if (modelToUpdate != null)
+                {
+                    modelToUpdate = entity;
+                }
+            }, cancellationToken);
         }
 
-        public Task UpdateAsync(ISpecification<TEntity> specification, TEntity entity, CancellationToken cancellationToken = default)
+
+        protected Expression<Func<TEntity, bool>> MapSpecification(ISpecification<TEntity> specification) => specification.ToExpression();
+        protected async ValueTask DoWork(Func<TContext, ValueTask> work, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            await using var dbContext = await dbContextFactory.CreateDbContextAsync(cancellationToken);
+            await work(dbContext);
+            await dbContext.SaveChangesAsync(cancellationToken);
+        }
+
+        protected async ValueTask<TResult> DoWork<TResult>(Func<TContext, ValueTask<TResult>> work, CancellationToken cancellationToken)
+        {
+            await using var dbContext = await dbContextFactory.CreateDbContextAsync(cancellationToken);
+            var result = await work(dbContext);
+            await dbContext.SaveChangesAsync(cancellationToken);
+            return result;
         }
     }
 }
