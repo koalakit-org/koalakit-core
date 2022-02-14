@@ -1,9 +1,10 @@
 ﻿using KoalaKit.Options;
+using KoalaKit.Tasks;
 using Microsoft.AspNetCore.Hosting.Internal;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
 
-namespace KoalaKit.Extensions
+// ReSharper disable once CheckNamespace
+namespace Microsoft.Extensions.DependencyInjection
 {
     public static class ServiceCollectionExtensions
     {
@@ -25,6 +26,14 @@ namespace KoalaKit.Extensions
             services.AddSingleton(koalaBuilder.Options);
 
             return services;
+        }
+
+        public static IServiceCollection AddKoalaTask<TTask>(this IServiceCollection services)
+            where TTask : class, IKoalaTask
+        {
+            return services
+                .AddScoped<TTask>()
+                .AddScoped<IKoalaTask, TTask>(sp => sp.GetRequiredService<TTask>());
         }
     }
 }
