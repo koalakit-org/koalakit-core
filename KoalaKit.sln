@@ -7,7 +7,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{0E996A6B-3A4
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "core", "core", "{4B5692FC-DBD8-44FD-BD90-FCAB5074435F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KoalaKit.Abstractions", "src\core\KoalaKit.Abstractions\KoalaKit.Abstractions.csproj", "{B53DFB6A-0C0F-429E-9E48-B8601F9540CC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KoalaKit.Abstractions", "src\core\KoalaKit.Abstractions\KoalaKit.Abstractions.csproj", "{B53DFB6A-0C0F-429E-9E48-B8601F9540CC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "persistence", "persistence", "{08D49CFC-A317-4690-80BA-D968ACC2EC9A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "efcore", "efcore", "{6476293F-CDBD-409D-9442-C916FA735320}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KoalaKit.Persistence.EntityFramework.Core", "src\persistence\KoalaKit.Persistence.EntityFramework.Core\KoalaKit.Persistence.EntityFramework.Core.csproj", "{768F99C6-CBB3-451E-8CE2-24600461D2BB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,6 +25,10 @@ Global
 		{B53DFB6A-0C0F-429E-9E48-B8601F9540CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B53DFB6A-0C0F-429E-9E48-B8601F9540CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B53DFB6A-0C0F-429E-9E48-B8601F9540CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{768F99C6-CBB3-451E-8CE2-24600461D2BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{768F99C6-CBB3-451E-8CE2-24600461D2BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{768F99C6-CBB3-451E-8CE2-24600461D2BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{768F99C6-CBB3-451E-8CE2-24600461D2BB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -26,6 +36,9 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{4B5692FC-DBD8-44FD-BD90-FCAB5074435F} = {0E996A6B-3A49-4C0C-82DC-F8E13B940141}
 		{B53DFB6A-0C0F-429E-9E48-B8601F9540CC} = {4B5692FC-DBD8-44FD-BD90-FCAB5074435F}
+		{08D49CFC-A317-4690-80BA-D968ACC2EC9A} = {0E996A6B-3A49-4C0C-82DC-F8E13B940141}
+		{6476293F-CDBD-409D-9442-C916FA735320} = {08D49CFC-A317-4690-80BA-D968ACC2EC9A}
+		{768F99C6-CBB3-451E-8CE2-24600461D2BB} = {6476293F-CDBD-409D-9442-C916FA735320}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3CD0F0D3-7D75-4E79-AFB4-7FA03F34D0AF}
