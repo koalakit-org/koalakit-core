@@ -1,15 +1,15 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 
-namespace KoalaKit.Persistence.EFCore.SqlServer
+namespace KoalaKit.Persistence.EFCore.MySql
 {
-    internal class SqlServerKoalaDbContextFactory : IDesignTimeDbContextFactory<KoalaDbContext>
+    public class MySqlKoalaContextFactory : IDesignTimeDbContextFactory<KoalaDbContext>
     {
         public KoalaDbContext CreateDbContext(string[] args)
         {
             var builder = new DbContextOptionsBuilder<KoalaDbContext>();
             var connectionString = args.Any() ? args[0] : throw new InvalidOperationException("");
-            builder.UseSqlServer(connectionString);
+            builder.UseMySql(connectionString);
             return new KoalaDbContext(builder.Options);
         }
     }

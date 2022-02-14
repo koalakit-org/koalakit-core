@@ -1,7 +1,6 @@
-﻿using KoalaKit.Persistence.EFCore;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 
-namespace KoalaKit.Persistence.EntityFramework.SqlServer
+namespace KoalaKit.Persistence.EFCore.SqlServer
 {
     public class SqlServerModule : EfCoreModuleBase
     {
