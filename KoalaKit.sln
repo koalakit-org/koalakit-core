@@ -23,6 +23,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KoalaKit.Persistence.Entity
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KoalaKit.Persistence.EntityFramework.Sqlite", "src\persistence\KoalaKit.Persistence.EntityFramework.Sqlite\KoalaKit.Persistence.EntityFramework.Sqlite.csproj", "{F43B1820-AE75-46F0-9BC7-3CFD2CD4C986}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KoalaKit.Persistence.EntityFramework.Oracle", "src\persistence\KoalaKit.Persistence.EntityFramework.Oracle\KoalaKit.Persistence.EntityFramework.Oracle.csproj", "{C9499634-1559-47A1-BD6A-EE6FEEBBA386}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,6 +55,10 @@ Global
 		{F43B1820-AE75-46F0-9BC7-3CFD2CD4C986}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F43B1820-AE75-46F0-9BC7-3CFD2CD4C986}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F43B1820-AE75-46F0-9BC7-3CFD2CD4C986}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9499634-1559-47A1-BD6A-EE6FEEBBA386}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9499634-1559-47A1-BD6A-EE6FEEBBA386}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9499634-1559-47A1-BD6A-EE6FEEBBA386}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9499634-1559-47A1-BD6A-EE6FEEBBA386}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -67,6 +73,7 @@ Global
 		{5A8A4FB3-D13C-4844-93A4-B440C98F3B94} = {6476293F-CDBD-409D-9442-C916FA735320}
 		{2CA12482-8A82-4FB2-830E-45C7C9FC18DC} = {6476293F-CDBD-409D-9442-C916FA735320}
 		{F43B1820-AE75-46F0-9BC7-3CFD2CD4C986} = {6476293F-CDBD-409D-9442-C916FA735320}
+		{C9499634-1559-47A1-BD6A-EE6FEEBBA386} = {6476293F-CDBD-409D-9442-C916FA735320}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3CD0F0D3-7D75-4E79-AFB4-7FA03F34D0AF}
