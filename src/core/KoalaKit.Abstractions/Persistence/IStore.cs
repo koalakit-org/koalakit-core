@@ -1,6 +1,6 @@
 ﻿namespace KoalaKit.Persistence
 {
-    internal class IStore<TEntity> where TEntity : class, IKoalaEntity
+    internal interface IStore<TEntity> where TEntity : class, IKoalaEntity
     {
     }
 }
