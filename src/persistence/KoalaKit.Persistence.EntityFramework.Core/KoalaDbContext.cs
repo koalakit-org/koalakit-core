@@ -10,5 +10,14 @@ namespace KoalaKit.Persistence.EFCore
         
         public static string Schema => DefaultSchema;
         public static string MigrationsHistoryTable => DefaultMigrationsHistoryTable;
+        
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            if (!string.IsNullOrWhiteSpace(Schema))
+                modelBuilder.HasDefaultSchema(Schema);
+            foreach (var dbEntityProvider in EntityProvidersCollection.List)
+                dbEntityProvider.OnModelCreating(modelBuilder);
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }
