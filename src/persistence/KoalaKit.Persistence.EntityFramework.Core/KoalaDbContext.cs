@@ -10,5 +10,12 @@ namespace KoalaKit.Persistence.EFCore
         
         public static string Schema => DefaultSchema;
         public static string MigrationsHistoryTable => DefaultMigrationsHistoryTable;
+
+        /// provider a method to pass any entities set and configurations to modelBuilder
+        /// in a generics way
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }
