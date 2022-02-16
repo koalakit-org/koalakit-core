@@ -29,7 +29,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "messaging", "messaging", "{
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "queuing", "queuing", "{5B33BA3A-44BD-4844-8C83-6A7248934B7A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KoalaKit.Queuing.RabbitMq", "messaging\queuing\KoalaKit.Queuing.RabbitMq\KoalaKit.Queuing.RabbitMq.csproj", "{E02B3742-8C43-4FC7-84EA-36F41FA4C29A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KoalaKit.Queuing.RabbitMq", "messaging\queuing\KoalaKit.Queuing.RabbitMq\KoalaKit.Queuing.RabbitMq.csproj", "{E02B3742-8C43-4FC7-84EA-36F41FA4C29A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Bus", "Bus", "{C9ECE9FC-61B2-46EF-B7FA-E2ED949AFDDF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KoalaKit.Bus.Redis", "messaging\Bus\KoalaKit.Bus.Redis\KoalaKit.Bus.Redis.csproj", "{AA60D1A7-A1AA-43B4-A6C2-7E2F7C155317}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,6 +73,10 @@ Global
 		{E02B3742-8C43-4FC7-84EA-36F41FA4C29A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E02B3742-8C43-4FC7-84EA-36F41FA4C29A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E02B3742-8C43-4FC7-84EA-36F41FA4C29A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA60D1A7-A1AA-43B4-A6C2-7E2F7C155317}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA60D1A7-A1AA-43B4-A6C2-7E2F7C155317}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA60D1A7-A1AA-43B4-A6C2-7E2F7C155317}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA60D1A7-A1AA-43B4-A6C2-7E2F7C155317}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -87,6 +95,8 @@ Global
 		{518E0C25-C14D-4EBB-8907-59CE2C8A2DBB} = {0E996A6B-3A49-4C0C-82DC-F8E13B940141}
 		{5B33BA3A-44BD-4844-8C83-6A7248934B7A} = {518E0C25-C14D-4EBB-8907-59CE2C8A2DBB}
 		{E02B3742-8C43-4FC7-84EA-36F41FA4C29A} = {5B33BA3A-44BD-4844-8C83-6A7248934B7A}
+		{C9ECE9FC-61B2-46EF-B7FA-E2ED949AFDDF} = {518E0C25-C14D-4EBB-8907-59CE2C8A2DBB}
+		{AA60D1A7-A1AA-43B4-A6C2-7E2F7C155317} = {C9ECE9FC-61B2-46EF-B7FA-E2ED949AFDDF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3CD0F0D3-7D75-4E79-AFB4-7FA03F34D0AF}
