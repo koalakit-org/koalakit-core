@@ -1,5 +1,7 @@
-﻿using KoalaKit.Messaging.Queuing;
+﻿using KoalaKit.Messaging;
+using KoalaKit.Messaging.Queuing;
 using KoalaKit.Queuing.RabbitMq.Extensions;
+using KoalaKit.Serializations;
 using Microsoft.Extensions.DependencyInjection;
 using RabbitMQ.Client.Events;
 
@@ -9,12 +11,12 @@ namespace KoalaKit.Queuing.RabbitMq
     {
         private readonly IMessageQueueFactory<TMessage> queueFactory;
         private readonly IServiceProvider serviceProvider;
-        private readonly MessageQueuingSerializer<TMessage> serializer;
+        private readonly ISerializer<TMessage> serializer;
 
         public QueuingMessageRabbitMqConsumer(
             IMessageQueueFactory<TMessage> queueFactory,
             IServiceProvider serviceProvider,
-            MessageQueuingSerializer<TMessage> serializer)
+            ISerializer<TMessage> serializer)
         {
             this.queueFactory = queueFactory;
             this.serviceProvider = serviceProvider;
@@ -28,7 +30,7 @@ namespace KoalaKit.Queuing.RabbitMq
             var model = RabbitMqExtensions.InitializeRabbitMqModel(queue);
             model.BasicQos(0, 1, false);
             var consumer = new EventingBasicConsumer(model);
-            consumer.Received += (sender, eventArgs) => { };
+            consumer.Received += Consumer_Received!;
         }
 
         private async void Consumer_Received(object sender, BasicDeliverEventArgs eventArgs)
