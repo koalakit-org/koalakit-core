@@ -1,6 +1,6 @@
 ﻿using KoalaKit.Serializations;
 
-namespace KoalaKit.Messaging
+namespace KoalaKit.Messaging.Queuing
 {
     public class MessageQueuingSerializer<TMessage> : KoalaJsonSerializer<TMessage> where TMessage : IQueuingMessage, new()
     {

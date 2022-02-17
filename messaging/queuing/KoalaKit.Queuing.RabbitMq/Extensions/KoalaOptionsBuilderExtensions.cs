@@ -1,4 +1,4 @@
-﻿using KoalaKit.Messaging;
+﻿using KoalaKit.Messaging.Queuing;
 using KoalaKit.Options;
 using Microsoft.Extensions.DependencyInjection;
 

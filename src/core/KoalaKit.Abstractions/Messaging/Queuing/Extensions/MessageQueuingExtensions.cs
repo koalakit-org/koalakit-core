@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace KoalaKit.Messaging
+namespace KoalaKit.Messaging.Queuing
 {
     public static class MessageQueuingExtensions
     {

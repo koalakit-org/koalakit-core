@@ -1,4 +1,4 @@
-﻿namespace KoalaKit.Messaging
+﻿namespace KoalaKit.Messaging.Queuing
 {
     public interface IMessageQueuingConnectionSelector<TMessage> where TMessage : IQueuingMessage, new()
     {
