@@ -1,17 +1,47 @@
 ﻿using KoalaKit.Messaging.Bus;
+using KoalaKit.Serializations;
+using StackExchange.Redis;
 
 namespace KoalaKit.Bus.Redis
 {
     public class RedisSubChannel<TMessage> : ISubChannel<TMessage> where TMessage : class, IBusMessage
     {
-        public Task SubscribeAsync()
+        private readonly IConnectionMultiplexer multiplexer;
+        private readonly IBusMessageDefinitionFactory<TMessage> definitionFactory;
+        private readonly ISerializer<TMessage> serializer;
+
+        public RedisSubChannel(
+            IConnectionMultiplexer multiplexer,
+            IBusMessageDefinitionFactory<TMessage> definitionFactory,
+            ISerializer<TMessage> serializer)
         {
-            throw new NotImplementedException();
+            this.multiplexer = multiplexer;
+            this.definitionFactory = definitionFactory;
+            this.serializer = serializer;
         }
 
-        public Task UnsubscribeAsync()
+
+        public async Task SubscribeAsync()
         {
-            throw new NotImplementedException();
+            var messageBus = definitionFactory.Create();
+            await multiplexer.GetSubscriber().SubscribeAsync(messageBus.Channel, (channel, redisValue) =>
+            {
+                //implement the handlers
+            });
         }
+
+        public async Task SubscribeAsync(Action<TMessage> handler)
+        {
+            var messageBus = definitionFactory.Create();
+            await multiplexer.GetSubscriber().SubscribeAsync(messageBus.Channel, (channel, redisValue) =>
+            {
+                var message = serializer.Deserialize(redisValue);
+                if(message == null) return;
+
+                handler.Invoke(message);
+            });
+        }
+
+        public async Task UnsubscribeAsync() => await multiplexer.GetSubscriber().UnsubscribeAsync(definitionFactory.Create().Channel);
     }
 }
