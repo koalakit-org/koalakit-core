@@ -1,4 +1,4 @@
-﻿using KoalaKit.Messaging;
+﻿using KoalaKit.Messaging.Queuing;
 using RabbitMQ.Client;
 
 namespace KoalaKit.Queuing.RabbitMq.Extensions

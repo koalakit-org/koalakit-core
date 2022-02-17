@@ -1,4 +1,4 @@
-﻿namespace KoalaKit.Messaging
+﻿namespace KoalaKit.Messaging.Queuing
 {
     /// <summary>
     /// the message being removed upon being dequeued

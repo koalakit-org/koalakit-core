@@ -1,4 +1,4 @@
-﻿using KoalaKit.Messaging;
+﻿using KoalaKit.Messaging.Queuing;
 using KoalaKit.Queuing.RabbitMq.Extensions;
 using Microsoft.Extensions.DependencyInjection;
 using RabbitMQ.Client.Events;

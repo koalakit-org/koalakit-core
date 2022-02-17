@@ -1,4 +1,4 @@
-﻿namespace KoalaKit.Messaging
+﻿namespace KoalaKit.Messaging.Queuing
 {
     public interface IMessageQueuingPublisher<in TMessage> where TMessage : IQueuingMessage, new()
     {

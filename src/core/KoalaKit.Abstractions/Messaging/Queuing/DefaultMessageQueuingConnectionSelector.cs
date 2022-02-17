@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Options;
 
-namespace KoalaKit.Messaging
+namespace KoalaKit.Messaging.Queuing
 {
     public class DefaultMessageQueuingConnectionSelector<TMessage> : IMessageQueuingConnectionSelector<TMessage> where TMessage : IQueuingMessage, new()
     {
