@@ -4,7 +4,8 @@ using StackExchange.Redis;
 
 namespace KoalaKit.Bus.Redis
 {
-    public class RedisPubChannel<TMessage> : IPubChannel<TMessage> where TMessage : class, IBusMessage
+    public class RedisPubChannel<TMessage> : IPubChannel<TMessage>
+        where TMessage : IBusMessage, new()
     {
         private readonly IConnectionMultiplexer multiplexer;
         private readonly IBusMessageDefinitionFactory<TMessage> definitionFactory;
