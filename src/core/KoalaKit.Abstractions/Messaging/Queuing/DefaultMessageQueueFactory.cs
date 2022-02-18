@@ -1,6 +1,7 @@
 ﻿namespace KoalaKit.Messaging.Queuing
 {
-    public class DefaultMessageQueueFactory<TMessage> : IMessageQueueFactory<TMessage> where TMessage : IQueuingMessage, new()
+    public class DefaultMessageQueueFactory<TMessage> : IMessageQueueFactory<TMessage> 
+        where TMessage : IQueuingMessage, new()
     {
         private readonly string queueName = new TMessage().QueueName;
         private readonly IMessageQueuingConnectionSelector<TMessage> connectionSelector;
