@@ -5,7 +5,8 @@ using RabbitMQ.Client;
 
 namespace KoalaKit.Queuing.RabbitMq
 {
-    public class QueuingMessageRabbitMqPublisher<TMessage> : IMessageQueuingPublisher<TMessage> where TMessage : IQueuingMessage, new()
+    public class QueuingMessageRabbitMqPublisher<TMessage> : IMessageQueuingPublisher<TMessage>
+        where TMessage : IQueuingMessage, new()
     {
         private readonly IMessageQueueFactory<TMessage> queueFactory;
         private readonly ISerializer<TMessage> serializer;

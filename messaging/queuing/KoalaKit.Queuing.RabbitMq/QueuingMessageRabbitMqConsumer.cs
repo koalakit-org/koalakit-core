@@ -7,7 +7,8 @@ using RabbitMQ.Client.Events;
 
 namespace KoalaKit.Queuing.RabbitMq
 {
-    public class QueuingMessageRabbitMqConsumer<TMessage> : IMessageQueuingConsumer<TMessage> where TMessage : IQueuingMessage, new()
+    public class QueuingMessageRabbitMqConsumer<TMessage> : IMessageQueuingConsumer<TMessage>
+        where TMessage : IQueuingMessage, new()
     {
         private readonly IMessageQueueFactory<TMessage> queueFactory;
         private readonly IServiceProvider serviceProvider;
@@ -35,7 +36,7 @@ namespace KoalaKit.Queuing.RabbitMq
 
         private async void Consumer_Received(object sender, BasicDeliverEventArgs eventArgs)
         {
-            var handler = serviceProvider.CreateScope().ServiceProvider.GetService<IMessageQueuingHandler<TMessage>>();
+            var handler = serviceProvider.CreateScope().ServiceProvider.GetService<IMessagingHandler<TMessage>>();
             if (handler != null)
             {
                 var message = serializer.Deserialize(eventArgs.Body.ToArray());
