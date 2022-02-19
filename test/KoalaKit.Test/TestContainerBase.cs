@@ -18,8 +18,8 @@ namespace KoalaKit.Test
             ResolveServices();
         }
 
-        protected IServiceProvider ServiceProvider { get; private set; }
-        protected IConfiguration Configuration { get; private set; }
+        protected IServiceProvider ServiceProvider { get; }
+        protected IConfiguration Configuration { get; }
 
         protected virtual void ConfigureServices(IServiceCollection services) { }
         protected virtual void ResolveServices() { }

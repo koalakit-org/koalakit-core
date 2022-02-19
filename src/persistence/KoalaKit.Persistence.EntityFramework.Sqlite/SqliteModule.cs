@@ -2,7 +2,7 @@
 
 namespace KoalaKit.Persistence.EFCore.Sqlite
 {
-    internal class SqliteModule : EfCoreModuleBase
+    public class SqliteModule : EfCoreModuleBase
     {
         protected override string ProviderName => "Sqlite";
 

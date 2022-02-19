@@ -2,7 +2,7 @@
 
 namespace KoalaKit.Persistence.EFCore.PostgreSql
 {
-    internal class PostgreSqlModule : EfCoreModuleBase
+    public class PostgreSqlModule : EfCoreModuleBase
     {
         protected override string ProviderName => "PostgreSql";
 
