@@ -6,6 +6,9 @@ namespace KoalaKit.Extensions
 {
     public static class KoalaOptionsBuilderExtensions
     {
+        public static KoalaOptionsBuilder AddModules(this KoalaOptionsBuilder builder, Type assemblyMarkerType)
+            => AddModules(builder, new[]{ assemblyMarkerType.Assembly });
+
         public static KoalaOptionsBuilder AddModules(this KoalaOptionsBuilder builder, IEnumerable<Type> assemblyMarkerTypes)
             => AddModules(builder, assemblyMarkerTypes.Select(x => x.Assembly).Distinct());
 

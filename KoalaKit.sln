@@ -37,7 +37,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KoalaKit.Bus.Redis", "messa
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{03D97B8E-DB45-4987-9ED7-02E6EF166393}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KoalaKit.Test", "test\KoalaKit.Test\KoalaKit.Test.csproj", "{1363B39A-80C4-44B9-AE75-AFA784D4E6F9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KoalaKit.Test", "test\KoalaKit.Test\KoalaKit.Test.csproj", "{1363B39A-80C4-44B9-AE75-AFA784D4E6F9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KoalaKit.Persistence.EfCore.Test", "test\KoalaKit.Persistence.EfCore.Test\KoalaKit.Persistence.EfCore.Test.csproj", "{FCBCE5C4-EA21-4507-9998-E175CD706B98}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -85,6 +87,10 @@ Global
 		{1363B39A-80C4-44B9-AE75-AFA784D4E6F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1363B39A-80C4-44B9-AE75-AFA784D4E6F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1363B39A-80C4-44B9-AE75-AFA784D4E6F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FCBCE5C4-EA21-4507-9998-E175CD706B98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCBCE5C4-EA21-4507-9998-E175CD706B98}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FCBCE5C4-EA21-4507-9998-E175CD706B98}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FCBCE5C4-EA21-4507-9998-E175CD706B98}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -106,6 +112,7 @@ Global
 		{C9ECE9FC-61B2-46EF-B7FA-E2ED949AFDDF} = {518E0C25-C14D-4EBB-8907-59CE2C8A2DBB}
 		{AA60D1A7-A1AA-43B4-A6C2-7E2F7C155317} = {C9ECE9FC-61B2-46EF-B7FA-E2ED949AFDDF}
 		{1363B39A-80C4-44B9-AE75-AFA784D4E6F9} = {03D97B8E-DB45-4987-9ED7-02E6EF166393}
+		{FCBCE5C4-EA21-4507-9998-E175CD706B98} = {03D97B8E-DB45-4987-9ED7-02E6EF166393}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3CD0F0D3-7D75-4E79-AFB4-7FA03F34D0AF}
