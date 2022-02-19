@@ -44,7 +44,7 @@ namespace KoalaKit.Persistence.EfCore.Test.Tests
 
         protected override void ConfigureServices(IServiceCollection services)
         {
-            services.AddKoalaKit(builder => builder.AddModules(typeof(SqliteModule)));
+            services.AddKoalaKitCore(builder => builder.AddModules(typeof(SqliteModule)));
             EntityProvidersCollection.AddDbEntityProvider(typeof(TestDbEntityProvider).Assembly);
             base.ConfigureServices(services);
         }
