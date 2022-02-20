@@ -15,7 +15,7 @@ namespace KoalaKit.Messaging.Test.Queuing
         private IMessageQueuingPublisher<TestQueuingMessage>? publisher;
 
         [TestMethod]
-        public void Publish()
+        public void RabbitMq_Publish()
         {
             if (publisher is null) Assert.Fail("messaging RabbitMQ module not registered. IMessageQueuingPublisher is null");
 

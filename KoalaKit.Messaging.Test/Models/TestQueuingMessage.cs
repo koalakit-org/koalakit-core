@@ -12,9 +12,10 @@ namespace KoalaKit.Messaging.Test.Models
 
     public class TestQueuingMessageHandler : IMessagingHandler<TestQueuingMessage>
     {
-        public Task<bool> HandleAsync(TestQueuingMessage message)
+        public async Task<bool> HandleAsync(TestQueuingMessage message)
         {
-            throw new NotImplementedException();
+            //TODO: implement
+            return true;
         }
     }
 }

@@ -18,10 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Bus\" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <ProjectReference Include="..\src\messaging\bus\KoalaKit.Bus.Redis\KoalaKit.Bus.Redis.csproj" />
     <ProjectReference Include="..\src\messaging\queuing\KoalaKit.Queuing.RabbitMq\KoalaKit.Queuing.RabbitMq.csproj" />
     <ProjectReference Include="..\test\KoalaKit.Test\KoalaKit.Test.csproj" />
   </ItemGroup>
