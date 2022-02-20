@@ -33,15 +33,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KoalaKit.Test", "test\Koala
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KoalaKit.Persistence.EfCore.Test", "test\KoalaKit.Persistence.EfCore.Test\KoalaKit.Persistence.EfCore.Test.csproj", "{FCBCE5C4-EA21-4507-9998-E175CD706B98}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KoalaKit", "src\core\KoalaKit\KoalaKit.csproj", "{A56D50DA-00E1-42C0-B861-A0122150B17B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KoalaKit", "src\core\KoalaKit\KoalaKit.csproj", "{A56D50DA-00E1-42C0-B861-A0122150B17B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "queuing", "queuing", "{57F6FF06-0F27-48F6-8D1C-41151575AD73}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KoalaKit.Queuing.RabbitMq", "src\messaging\queuing\KoalaKit.Queuing.RabbitMq\KoalaKit.Queuing.RabbitMq.csproj", "{2FC8DDFC-C7F7-4F9B-871C-71A3A485B0EF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KoalaKit.Queuing.RabbitMq", "src\messaging\queuing\KoalaKit.Queuing.RabbitMq\KoalaKit.Queuing.RabbitMq.csproj", "{2FC8DDFC-C7F7-4F9B-871C-71A3A485B0EF}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "bus", "bus", "{2FC44355-E9D0-4D78-8BE6-CA5C17DC7CC9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KoalaKit.Bus.Redis", "src\messaging\bus\KoalaKit.Bus.Redis\KoalaKit.Bus.Redis.csproj", "{64136AE1-24F9-4A44-9906-06270B51EA64}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KoalaKit.Bus.Redis", "src\messaging\bus\KoalaKit.Bus.Redis\KoalaKit.Bus.Redis.csproj", "{64136AE1-24F9-4A44-9906-06270B51EA64}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KoalaKit.Messaging.Test", "KoalaKit.Messaging.Test\KoalaKit.Messaging.Test.csproj", "{D41CFC9E-0DB7-4CEE-AF0E-17D3B0136FA3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -97,6 +99,10 @@ Global
 		{64136AE1-24F9-4A44-9906-06270B51EA64}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{64136AE1-24F9-4A44-9906-06270B51EA64}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{64136AE1-24F9-4A44-9906-06270B51EA64}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D41CFC9E-0DB7-4CEE-AF0E-17D3B0136FA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D41CFC9E-0DB7-4CEE-AF0E-17D3B0136FA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D41CFC9E-0DB7-4CEE-AF0E-17D3B0136FA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D41CFC9E-0DB7-4CEE-AF0E-17D3B0136FA3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -120,6 +126,7 @@ Global
 		{2FC8DDFC-C7F7-4F9B-871C-71A3A485B0EF} = {57F6FF06-0F27-48F6-8D1C-41151575AD73}
 		{2FC44355-E9D0-4D78-8BE6-CA5C17DC7CC9} = {518E0C25-C14D-4EBB-8907-59CE2C8A2DBB}
 		{64136AE1-24F9-4A44-9906-06270B51EA64} = {2FC44355-E9D0-4D78-8BE6-CA5C17DC7CC9}
+		{D41CFC9E-0DB7-4CEE-AF0E-17D3B0136FA3} = {03D97B8E-DB45-4987-9ED7-02E6EF166393}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3CD0F0D3-7D75-4E79-AFB4-7FA03F34D0AF}
