@@ -5,4 +5,5 @@
         T Get(string key);
         void Set(string key, T value);
     }
+
 }
