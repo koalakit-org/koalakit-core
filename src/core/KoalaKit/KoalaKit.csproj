@@ -7,7 +7,7 @@
 		<Nullable>enable</Nullable>
 		<Description>
 		</Description>
-		<PackageTags>Koalakit, .net6, messaging, persistence</PackageTags>
+		<PackageTags>Koalakit</PackageTags>
 	</PropertyGroup>
 
 	<ItemGroup>

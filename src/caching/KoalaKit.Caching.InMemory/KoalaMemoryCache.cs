@@ -2,59 +2,24 @@
 
 namespace KoalaKit.Caching.InMemory
 {
+    //Inprogress. assumed as not implemented.
     internal class KoalaMemoryCache<T> : ICache<T>
     {
+        private readonly IMemoryCache cache;
 
-        public KoalaMemoryCache(IMemoryCache memoryCache)
+        public KoalaMemoryCache(IMemoryCache cache)
         {
-            this.memoryCache = memoryCache;
+            this.cache = cache;
         }
-
 
         public T Get(string key)
         {
-            if(memoryCache.TryGetValue(key, out var v))
-                return (T)v;
-            
-            string timestamp = memoryCache.GetOrCreate(key, entry =>
-            {
-                entry.AbsoluteExpirationRelativeToNow = TimeSpan.FromSeconds(5);
-                return DateTime.Now.ToString();
-            });
-
-            //memoryCache.GetOrCreateAsync()
-
+            return cache.TryGetValue(key, out var value) ? (T) value : default(T);
         }
 
         public void Set(string key, T value)
         {
-            var entry = memoryCache.CreateEntry(key);
-            entry.Value = value;
-
-            entry.
-        }
-    }
-
-    public class KoalaMemoryCache : IMemoryCache
-    {
-        public void Dispose()
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool TryGetValue(object key, out object value)
-        {
-            throw new NotImplementedException();
-        }
-
-        public ICacheEntry CreateEntry(object key)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Remove(object key)
-        {
-            throw new NotImplementedException();
+            cache.Set(key, value);
         }
     }
 }
