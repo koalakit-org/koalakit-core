@@ -2,29 +2,47 @@
 {
     public class CacheFactory : ICacheFactory
     {
+        private const string DefaultCategory = "Category";
         private readonly Dictionary<string, ICache> caches = new(StringComparer.Ordinal);
         private readonly List<CacheProviderRegistration> providerRegistrations = new();
-        public ICache GetOrCreate<T>()
-        {
-            if (caches.TryGetValue("", out var cache)) return cache;
 
-            var provider = providerRegistrations
-                .First(a => a.CachedType == typeof(string)).Provider;
-            cache = provider.CreateCache();
-            caches[""] = cache;
+        public ICache GetOrCreate<T>()
+            => GetOrCreate(nameof(T));
+
+        public ICache GetOrCreate(string category)
+        {
+            if (caches.TryGetValue(category, out var cache)) return cache;
+            
+            cache = GetProvider(category).CreateCache();
+            caches[category] = cache;
             return cache;
         }
 
+
         public void AddProvider(ICacheProvider provider)
         {
-            AddProviderRegistration(provider, typeof(string));
+            AddProviderRegistration(provider, DefaultCategory);
         }
 
-        private void AddProviderRegistration(ICacheProvider provider, Type cachedType)
+        public void AddProvider<T>(ICacheProvider provider)
+        {
+            AddProviderRegistration(provider, nameof(T));
+        }
+
+        private ICacheProvider GetProvider(string category)
+        {
+            var providerRegistration = providerRegistrations.FirstOrDefault(a => a.Category == category);
+
+            if (providerRegistration.Provider == null || string.IsNullOrWhiteSpace(providerRegistration.Category))
+                providerRegistration = providerRegistrations.First(a => a.Category == DefaultCategory);
+
+            return providerRegistration.Provider;
+        }
+        private void AddProviderRegistration(ICacheProvider provider, string category)
         {
             providerRegistrations.Add(new CacheProviderRegistration
             {
-                CachedType = cachedType,
+                Category = category,
                 Provider = provider
             });
         }
@@ -32,7 +50,7 @@
         private struct CacheProviderRegistration
         {
             public ICacheProvider Provider;
-            public Type CachedType;
+            public string Category;
         }
     }
 }

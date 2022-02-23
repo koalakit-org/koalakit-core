@@ -2,14 +2,17 @@
 {
     internal class Cache : ICache
     {
-        public Task SetAsync<T>(T data, string key)
+        private readonly ICacheFactory cacheFactory;
+
+        public Cache(ICacheFactory cacheFactory)
         {
-            throw new NotImplementedException();
+            this.cacheFactory = cacheFactory;
         }
 
-        public Task<T> GetAsync<T>(string key)
-        {
-            throw new NotImplementedException();
-        }
+        public async Task SetAsync<T>(string key, T data)
+            => await cacheFactory.GetOrCreate<T>().SetAsync(key, data);
+
+        public async Task<T> GetAsync<T>(string key)
+            => await cacheFactory.GetOrCreate<T>().GetAsync<T>(key);
     }
 }

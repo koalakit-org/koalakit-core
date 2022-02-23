@@ -2,7 +2,7 @@
 {
     public interface ICache
     {
-        Task SetAsync<T>(T data, string key);
+        Task SetAsync<T>(string key, T data);
         Task<T> GetAsync<T>(string key);
     }
 }
