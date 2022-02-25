@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\core\KoalaKit.Abstractions\KoalaKit.Abstractions.csproj" />
+    <ProjectReference Include="..\..\persistence\KoalaKit.Persistence.EntityFramework.Core\KoalaKit.Persistence.EntityFramework.Core.csproj" />
   </ItemGroup>
 
 </Project>
