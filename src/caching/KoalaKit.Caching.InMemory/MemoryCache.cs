@@ -4,15 +4,20 @@ namespace KoalaKit.Caching.InMemory
 {
     public class MemoryCache : ICache
     {
-        private readonly IMemoryCache memoryCache;
+        private readonly Dictionary<string, CacheItem>
+
+        public MemoryCache(IMemoryCache cache)
+        {
+            this.cache = cache;
+        }
         public async Task SetAsync<T>(string key, T data)
         {
-            memoryCache.Set<T>(key, data);
+            cache.Set<T>(key, data);
         }
 
         public async Task<T> GetAsync<T>(string key)
         {
-            return memoryCache.Get<T>(key);
+            return cache.Get<T>(key);
         }
     }
 }
