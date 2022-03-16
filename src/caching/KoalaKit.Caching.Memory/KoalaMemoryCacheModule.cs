@@ -2,13 +2,13 @@
 using KoalaKit.Options;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace KoalaKit.Caching.InMemory
+namespace KoalaKit.Caching.Memory
 {
-    public class KoalaMemoryCacheModule : KoalaModuleBase
+    internal class KoalaMemoryCacheModule : KoalaModuleBase
     {
         public override void ConfigureKoala(KoalaOptionsBuilder koala)
         {
-            koala.Services.AddSingleton<ICache, MemoryCache>();
+            koala.Services.AddSingleton(typeof(ICache), typeof(KoalaMemoryCache));
             base.ConfigureKoala(koala);
         }
     }

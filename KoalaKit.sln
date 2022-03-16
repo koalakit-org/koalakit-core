@@ -45,9 +45,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KoalaKit.Bus.Redis", "src\m
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "caching", "caching", "{C3DBA4D1-7001-485D-82CF-DD392FC02BAF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KoalaKit.Caching.InMemory", "src\caching\KoalaKit.Caching.InMemory\KoalaKit.Caching.InMemory.csproj", "{A0F03BB8-5FAE-443F-85A0-41DB1DB791F3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KoalaKit.Messaging.Test", "test\KoalaKit.Messaging.Test\KoalaKit.Messaging.Test.csproj", "{D4AF1B36-C3BA-4ECD-B914-CFBC517AB626}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KoalaKit.Messaging.Test", "test\KoalaKit.Messaging.Test\KoalaKit.Messaging.Test.csproj", "{D4AF1B36-C3BA-4ECD-B914-CFBC517AB626}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KoalaKit.Caching.Memory", "src\caching\KoalaKit.Caching.Memory\KoalaKit.Caching.Memory.csproj", "{0721AEC0-F719-4E9F-836F-AA10CB1BD3F5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -103,14 +103,14 @@ Global
 		{64136AE1-24F9-4A44-9906-06270B51EA64}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{64136AE1-24F9-4A44-9906-06270B51EA64}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{64136AE1-24F9-4A44-9906-06270B51EA64}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A0F03BB8-5FAE-443F-85A0-41DB1DB791F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A0F03BB8-5FAE-443F-85A0-41DB1DB791F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A0F03BB8-5FAE-443F-85A0-41DB1DB791F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A0F03BB8-5FAE-443F-85A0-41DB1DB791F3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D4AF1B36-C3BA-4ECD-B914-CFBC517AB626}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D4AF1B36-C3BA-4ECD-B914-CFBC517AB626}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D4AF1B36-C3BA-4ECD-B914-CFBC517AB626}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D4AF1B36-C3BA-4ECD-B914-CFBC517AB626}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0721AEC0-F719-4E9F-836F-AA10CB1BD3F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0721AEC0-F719-4E9F-836F-AA10CB1BD3F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0721AEC0-F719-4E9F-836F-AA10CB1BD3F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0721AEC0-F719-4E9F-836F-AA10CB1BD3F5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -135,8 +135,8 @@ Global
 		{2FC44355-E9D0-4D78-8BE6-CA5C17DC7CC9} = {518E0C25-C14D-4EBB-8907-59CE2C8A2DBB}
 		{64136AE1-24F9-4A44-9906-06270B51EA64} = {2FC44355-E9D0-4D78-8BE6-CA5C17DC7CC9}
 		{C3DBA4D1-7001-485D-82CF-DD392FC02BAF} = {0E996A6B-3A49-4C0C-82DC-F8E13B940141}
-		{A0F03BB8-5FAE-443F-85A0-41DB1DB791F3} = {C3DBA4D1-7001-485D-82CF-DD392FC02BAF}
 		{D4AF1B36-C3BA-4ECD-B914-CFBC517AB626} = {03D97B8E-DB45-4987-9ED7-02E6EF166393}
+		{0721AEC0-F719-4E9F-836F-AA10CB1BD3F5} = {C3DBA4D1-7001-485D-82CF-DD392FC02BAF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3CD0F0D3-7D75-4E79-AFB4-7FA03F34D0AF}
