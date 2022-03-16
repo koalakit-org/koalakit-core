@@ -1,6 +1,6 @@
-﻿namespace KoalaKit.Caching
+﻿    namespace KoalaKit.Caching
 {
-    public interface ICacheProvider<T>
+    public interface ICacheProvider
     {
         ICache Get();
     }

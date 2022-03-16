@@ -1,10 +1,21 @@
-﻿namespace KoalaKit.Caching.Memory
+﻿using Microsoft.Extensions.DependencyInjection;
+
+namespace KoalaKit.Caching.Memory
 {
-    public class MemoryCacheProvider<T> : ICacheProvider<T>
+    public class MemoryCacheProvider : ICacheProvider
     {
-        private readonly ICache cache;
+        private readonly IServiceProvider serviceProvider;
+
+        public MemoryCacheProvider(IServiceProvider serviceProvider)
+        {
+            this.serviceProvider = serviceProvider;
+        }
+
         public ICache Get()
         {
+            var cache = serviceProvider.CreateScope().ServiceProvider.GetService<KoalaMemoryCache>();
+            if (cache == null) throw new InvalidOperationException();
+
             return cache;
         }
     }

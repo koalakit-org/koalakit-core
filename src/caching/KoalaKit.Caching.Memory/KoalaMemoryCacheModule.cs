@@ -8,7 +8,8 @@ namespace KoalaKit.Caching.Memory
     {
         public override void ConfigureKoala(KoalaOptionsBuilder koala)
         {
-            koala.Services.AddSingleton(typeof(ICache), typeof(KoalaMemoryCache));
+            koala.AddKoalaCachingCore();
+            koala.Services.AddScoped<ICacheProvider, MemoryCacheProvider>();
             base.ConfigureKoala(koala);
         }
     }

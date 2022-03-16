@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Extensions.Caching.Memory;
+﻿using Microsoft.Extensions.Caching.Memory;
 
 namespace KoalaKit.Caching.Memory
 {
@@ -16,12 +11,10 @@ namespace KoalaKit.Caching.Memory
             this.memoryCache = memoryCache;
         }
 
-        public async Task<T> GetAsync<T>(string key)
+        public async Task<T?> GetAsync<T>(string key)
         {
-            if (memoryCache.TryGetValue<T>(key, out var value))
-                return value;
-
-            return default(T);
+            memoryCache.TryGetValue<T>(key, out var value);
+            return value;
         }
 
         public async Task SetAsync<T>(string key, T data)
