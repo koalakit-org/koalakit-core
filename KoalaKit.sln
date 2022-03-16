@@ -47,8 +47,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "caching", "caching", "{C3DB
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KoalaKit.Messaging.Test", "test\KoalaKit.Messaging.Test\KoalaKit.Messaging.Test.csproj", "{D4AF1B36-C3BA-4ECD-B914-CFBC517AB626}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KoalaKit.Messaging.Test", "test\KoalaKit.Messaging.Test\KoalaKit.Messaging.Test.csproj", "{D4AF1B36-C3BA-4ECD-B914-CFBC517AB626}"
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KoalaKit.Caching.Memory", "src\caching\KoalaKit.Caching.Memory\KoalaKit.Caching.Memory.csproj", "{0721AEC0-F719-4E9F-836F-AA10CB1BD3F5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KoalaKit.Caching.Memory", "src\caching\KoalaKit.Caching.Memory\KoalaKit.Caching.Memory.csproj", "{0721AEC0-F719-4E9F-836F-AA10CB1BD3F5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

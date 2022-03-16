@@ -1,6 +1,4 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-
-namespace KoalaKit.Caching
+﻿namespace KoalaKit.Caching
 {
     public interface ICacheFactory
     {
