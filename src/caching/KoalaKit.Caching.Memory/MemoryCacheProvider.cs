@@ -2,7 +2,7 @@
 
 namespace KoalaKit.Caching.Memory
 {
-    public class MemoryCacheProvider : ICacheProvider
+    public class MemoryCacheProvider<T> : ICacheProvider<T>
     {
         private readonly IServiceProvider serviceProvider;
 
@@ -15,7 +15,6 @@ namespace KoalaKit.Caching.Memory
         {
             var cache = serviceProvider.CreateScope().ServiceProvider.GetService<KoalaMemoryCache>();
             if (cache == null) throw new InvalidOperationException();
-
             return cache;
         }
     }

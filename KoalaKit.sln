@@ -49,6 +49,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KoalaKit.Messaging.Test", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KoalaKit.Caching.Memory", "src\caching\KoalaKit.Caching.Memory\KoalaKit.Caching.Memory.csproj", "{0721AEC0-F719-4E9F-836F-AA10CB1BD3F5}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KoalaKit.Caching.Test", "test\KoalaKit.Caching.Test\KoalaKit.Caching.Test.csproj", "{C67151BF-2868-456B-A036-310EF8CE5B58}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication1", "WebApplication1\WebApplication1.csproj", "{03AC9977-19BE-43DB-A434-CD32EB0930AB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -111,6 +115,14 @@ Global
 		{0721AEC0-F719-4E9F-836F-AA10CB1BD3F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0721AEC0-F719-4E9F-836F-AA10CB1BD3F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0721AEC0-F719-4E9F-836F-AA10CB1BD3F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C67151BF-2868-456B-A036-310EF8CE5B58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C67151BF-2868-456B-A036-310EF8CE5B58}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C67151BF-2868-456B-A036-310EF8CE5B58}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C67151BF-2868-456B-A036-310EF8CE5B58}.Release|Any CPU.Build.0 = Release|Any CPU
+		{03AC9977-19BE-43DB-A434-CD32EB0930AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03AC9977-19BE-43DB-A434-CD32EB0930AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03AC9977-19BE-43DB-A434-CD32EB0930AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03AC9977-19BE-43DB-A434-CD32EB0930AB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -137,6 +149,7 @@ Global
 		{C3DBA4D1-7001-485D-82CF-DD392FC02BAF} = {0E996A6B-3A49-4C0C-82DC-F8E13B940141}
 		{D4AF1B36-C3BA-4ECD-B914-CFBC517AB626} = {03D97B8E-DB45-4987-9ED7-02E6EF166393}
 		{0721AEC0-F719-4E9F-836F-AA10CB1BD3F5} = {C3DBA4D1-7001-485D-82CF-DD392FC02BAF}
+		{C67151BF-2868-456B-A036-310EF8CE5B58} = {03D97B8E-DB45-4987-9ED7-02E6EF166393}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3CD0F0D3-7D75-4E79-AFB4-7FA03F34D0AF}

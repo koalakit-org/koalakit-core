@@ -4,12 +4,14 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace KoalaKit.Caching.Memory
 {
-    internal class KoalaMemoryCacheModule : KoalaModuleBase
+    public class KoalaMemoryCacheModule : KoalaModuleBase
     {
         public override void ConfigureKoala(KoalaOptionsBuilder koala)
         {
             koala.AddKoalaCachingCore();
-            koala.Services.AddScoped<ICacheProvider, MemoryCacheProvider>();
+            koala.Services.AddMemoryCache();
+            koala.Services.AddScoped<KoalaMemoryCache>();
+            koala.Services.AddScoped(typeof(ICacheProvider<>), typeof(MemoryCacheProvider<>));
             base.ConfigureKoala(koala);
         }
     }

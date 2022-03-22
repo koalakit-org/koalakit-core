@@ -14,7 +14,10 @@ namespace KoalaKit.Caching
         public ICache Create<T>()
         {
             var provider = serviceProvider.CreateScope().ServiceProvider.GetService<ICacheProvider<T>>();
+            //var handlers = serviceProvider.CreateScope().ServiceProvider.GetServices<ICacheProvider<T>>();
+
             if (provider == null) throw new InvalidOperationException("No cache registred!");
+
             return provider.Get();
         }
     }

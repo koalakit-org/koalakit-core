@@ -5,6 +5,10 @@
         private readonly ICacheFactory cacheFactory;
         public Cache(ICacheFactory cacheFactory) => this.cacheFactory = cacheFactory;
         public async Task<T> GetAsync<T>(string key) => await cacheFactory.Create<T>().GetAsync<T>(key);
-        public async Task SetAsync<T>(string key, T data) => await cacheFactory.Create<T>().SetAsync(key, data);
+        public async Task SetAsync<T>(string key, T data)
+        {
+            var cache = cacheFactory.Create<T>();
+            await cache.SetAsync(key, data);
+        }
     }
 }
