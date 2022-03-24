@@ -28,7 +28,7 @@ namespace KoalaKit.Messaging.Test.Bus
 
         protected override void ConfigureServices(IServiceCollection services)
         {
-            services.AddKoalaKitCore(builder => builder.AddModules(typeof(RedisMessagingBusModule)));
+            services.AddKoalaKitCore(Configuration, builder => builder.AddModules(typeof(RedisMessagingBusModule)));
             base.ConfigureServices(services);
             services.AddTransient<IMessagingHandler<TestBusMessage>, TestBusMessageHandler>();
         }
