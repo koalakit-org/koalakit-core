@@ -25,7 +25,7 @@ namespace KoalaKit.Messaging.Test.Queuing
 
         protected override void ConfigureServices(IServiceCollection services)
         {
-            services.AddKoalaKitCore(builder => builder.AddModules(typeof(RabbitMqModule)));
+            services.AddKoalaKitCore(Configuration, builder => builder.AddModules(typeof(RabbitMqModule)));
             base.ConfigureServices(services);
             services.AddTransient<IMessagingHandler<TestQueuingMessage>, TestQueuingMessageHandler>();
         }
