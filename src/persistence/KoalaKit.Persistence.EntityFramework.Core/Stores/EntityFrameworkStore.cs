@@ -38,7 +38,7 @@ namespace KoalaKit.Persistence.EFCore
         {
             return await DoWork(async dbContext =>
             {
-                var count = await dbContext.Set<TEntity>().CountAsync(MapSpecification(specification), cancellationToken);
+                var count = await dbContext.Set<TEntity>().CountAsync(specification.Criteria, cancellationToken);
                 return count;
             }, cancellationToken);
         }
@@ -57,7 +57,7 @@ namespace KoalaKit.Persistence.EFCore
             return await DoWork(async dbContext =>
             {
                 var query = dbContext.Set<TEntity>().AsQueryable()
-                    .Where(MapSpecification(specification));
+                    .Where(specification.Criteria);
                 return await query.BatchDeleteAsync(cancellationToken);
             }, cancellationToken);
         }
@@ -66,7 +66,9 @@ namespace KoalaKit.Persistence.EFCore
         {
             return await DoWork(async dbContext =>
             {
-                var result = await dbContext.Set<TEntity>().FirstOrDefaultAsync(MapSpecification(specification));
+                var query = specification.Includes.Aggregate(dbContext.Set<TEntity>().AsQueryable(), (current, include) => current.Include(include));
+
+                var result = await query.FirstOrDefaultAsync(specification.Criteria);
                 return result;
             }, cancellationToken);
         }
@@ -76,8 +78,9 @@ namespace KoalaKit.Persistence.EFCore
             return await DoWork(async dbContext =>
             {
 
-                var dbSet = dbContext.Set<TEntity>();
-                var queryable = dbSet.Where(MapSpecification(specification));
+                var query = specification.Includes.Aggregate(dbContext.Set<TEntity>().AsQueryable(), (current, include) => current.Include(include));
+
+                var queryable = query.Where(specification.Criteria);
 
                 if (orderBy != null)
                 {
@@ -88,8 +91,7 @@ namespace KoalaKit.Persistence.EFCore
                 if (paging != null)
                     queryable = queryable.Skip(paging.Skip).Take(paging.Take);
 
-                var query = dbContext.Set<TEntity>().AsQueryable();
-                return await query.Where(MapSpecification(specification)).ToListAsync(cancellationToken);
+                return await query.Where(specification.Criteria).ToListAsync(cancellationToken);
             }, cancellationToken);
         }
 
@@ -102,7 +104,6 @@ namespace KoalaKit.Persistence.EFCore
             }, cancellationToken);
         }
         
-        protected Expression<Func<TEntity, bool>> MapSpecification(ISpecification<TEntity> specification) => specification.ToExpression();
 
         protected async ValueTask DoWork(Func<TContext, ValueTask> work, CancellationToken cancellationToken)
         {
