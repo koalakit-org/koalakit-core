@@ -1,10 +1,9 @@
 ﻿using System.Linq.Expressions;
 using EFCore.BulkExtensions;
 using KoalaKit.Persistence.Specifications;
+using KoalaKit.Specifications;
 using Microsoft.EntityFrameworkCore;
 
-
-// ReSharper disable once CheckNamespace
 namespace KoalaKit.Persistence.EFCore
 {
     public abstract class EntityFrameworkStore<TEntity, TContext> : IStore<TEntity>
@@ -53,13 +52,13 @@ namespace KoalaKit.Persistence.EFCore
             }, cancellationToken);
         }
 
-        public async Task DeleteManyAsync(ISpecification<TEntity> specification, CancellationToken cancellationToken = default)
+        public async Task<int> DeleteManyAsync(ISpecification<TEntity> specification, CancellationToken cancellationToken = default)
         {
-            await DoWork(async dbContext =>
+            return await DoWork(async dbContext =>
             {
                 var query = dbContext.Set<TEntity>().AsQueryable()
                     .Where(MapSpecification(specification));
-                await query.BatchDeleteAsync(cancellationToken);
+                return await query.BatchDeleteAsync(cancellationToken);
             }, cancellationToken);
         }
 
@@ -72,29 +71,39 @@ namespace KoalaKit.Persistence.EFCore
             }, cancellationToken);
         }
 
-        public async Task<IEnumerable<TEntity>> ListAsync(ISpecification<TEntity> specification, CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<TEntity>> FindManyAsync(ISpecification<TEntity> specification, IOrderBy<TEntity>? orderBy = null, IPaging? paging = null, CancellationToken cancellationToken = default)
         {
             return await DoWork(async dbContext =>
             {
+
+                var dbSet = dbContext.Set<TEntity>();
+                var queryable = dbSet.Where(MapSpecification(specification));
+
+                if (orderBy != null)
+                {
+                    var orderByExpression = orderBy.OrderByExpression;
+                    queryable = orderBy.SortDirection == SortDirection.Ascending ? queryable.OrderBy(orderByExpression) : queryable.OrderByDescending(orderByExpression);
+                }
+
+                if (paging != null)
+                    queryable = queryable.Skip(paging.Skip).Take(paging.Take);
+
                 var query = dbContext.Set<TEntity>().AsQueryable();
-                return await query.Where(MapSpecification(specification)).ToListAsync<TEntity>(cancellationToken);
+                return await query.Where(MapSpecification(specification)).ToListAsync(cancellationToken);
             }, cancellationToken);
         }
 
-        public async Task UpdateAsync(ISpecification<TEntity> specification, TEntity entity, CancellationToken cancellationToken = default)
+        public async Task UpdateAsync(TEntity entity, CancellationToken cancellationToken = default)
         {
             await DoWork(async dbContext =>
             {
-                var modelToUpdate = await dbContext.Set<TEntity>().SingleOrDefaultAsync(MapSpecification(specification));
-                if (modelToUpdate != null)
-                {
-                    modelToUpdate = entity;
-                }
+                var modelToUpdate = await dbContext.Set<TEntity>().SingleOrDefaultAsync(e => e.Id == entity.Id || e.ExternalId == entity.ExternalId);
+                if (modelToUpdate != null) modelToUpdate = entity;
             }, cancellationToken);
         }
-
-
+        
         protected Expression<Func<TEntity, bool>> MapSpecification(ISpecification<TEntity> specification) => specification.ToExpression();
+
         protected async ValueTask DoWork(Func<TContext, ValueTask> work, CancellationToken cancellationToken)
         {
             await using var dbContext = await dbContextFactory.CreateDbContextAsync(cancellationToken);
