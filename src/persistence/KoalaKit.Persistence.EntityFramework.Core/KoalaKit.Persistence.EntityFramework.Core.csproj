@@ -5,6 +5,11 @@
 		<RootNamespace>KoalaKit.Persistence.EFCore</RootNamespace>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
+    <Description>Koalakit, Framework, web developments tool</Description>
+    <PackageTags>Koalakit, Framework, EfCore, Entities, web developments tool</PackageTags>
+    <PackageId>KoalaKit.Persistence.EFCore</PackageId>
+    <Version>1.0.0</Version>
+    <Authors>Koalakit.org</Authors>
 	</PropertyGroup>
 
 	<ItemGroup>

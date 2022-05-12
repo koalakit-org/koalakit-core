@@ -6,7 +6,7 @@ namespace KoalaKit.Persistence.EFCore.PostgreSql
     {
         protected override string ProviderName => "PostgreSql";
 
-        protected override void Configure(DbContextOptionsBuilder builder, string connectionString)
-            => builder.UsePostgreSql(connectionString);
+        protected override void Configure(DbContextOptionsBuilder builder, string connectionString, string migrationsAssemblyName)
+            => builder.ConfigurePostgreSql(connectionString, migrationsAssemblyName);
     }
 }

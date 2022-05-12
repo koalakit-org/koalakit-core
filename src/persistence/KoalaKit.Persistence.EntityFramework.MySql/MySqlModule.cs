@@ -6,7 +6,7 @@ namespace KoalaKit.Persistence.EFCore.MySql
     {
         protected override string ProviderName => "MySql";
 
-        protected override void Configure(DbContextOptionsBuilder builder, string connectionString)
-            => builder.UseMySql(connectionString);
+        protected override void Configure(DbContextOptionsBuilder builder, string connectionString, string migrationsAssemblyName)
+            => builder.ConfigureMySql(connectionString, migrationsAssemblyName);
     }
 }
