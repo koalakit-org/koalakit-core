@@ -5,6 +5,11 @@
 		<RootNamespace>KoalaKit</RootNamespace>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
+    <Description>Koalakit, Framework, web developments tool</Description>
+    <PackageTags>Koalakit, Framework, web developments tool</PackageTags>
+    <PackageId>Koalakit.Abstractions</PackageId>
+    <Version>1.0.0</Version>
+    <Authors>Koalakit.org</Authors>
 	</PropertyGroup>
 
 	<ItemGroup>

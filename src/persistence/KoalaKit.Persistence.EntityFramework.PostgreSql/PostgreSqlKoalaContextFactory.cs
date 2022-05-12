@@ -9,7 +9,7 @@ namespace KoalaKit.Persistence.EFCore.PostgreSql
         {
             var builder = new DbContextOptionsBuilder<KoalaDbContext>();
             var connectionString = args.Any() ? args[0] : throw new InvalidOperationException("");
-            builder.UsePostgreSql(connectionString);
+            builder.ConfigurePostgreSql(connectionString);
 
             return new KoalaDbContext(builder.Options);
         }
