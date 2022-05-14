@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<TargetFramework>net6.0</TargetFramework>
@@ -8,7 +8,7 @@
     <Description>Koalakit, Framework, web developments tool</Description>
     <PackageTags>Koalakit, Framework, EfCore, Entities, Sql Server, web developments tool</PackageTags>
     <PackageId>KoalaKit.Persistence.EFCore.SqlServer</PackageId>
-    <Version>1.0.0</Version>
+    <Version>1.0.3-alpha</Version>
     <Authors>Koalakit.org</Authors>
 	</PropertyGroup>
 
