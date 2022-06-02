@@ -51,6 +51,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KoalaKit.Caching.Memory", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KoalaKit.Caching.Test", "test\KoalaKit.Caching.Test\KoalaKit.Caching.Test.csproj", "{C67151BF-2868-456B-A036-310EF8CE5B58}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication1", "WebApplication1\WebApplication1.csproj", "{06C10CAA-A5FC-4A33-81B1-E442048409EB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -117,6 +119,10 @@ Global
 		{C67151BF-2868-456B-A036-310EF8CE5B58}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C67151BF-2868-456B-A036-310EF8CE5B58}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C67151BF-2868-456B-A036-310EF8CE5B58}.Release|Any CPU.Build.0 = Release|Any CPU
+		{06C10CAA-A5FC-4A33-81B1-E442048409EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06C10CAA-A5FC-4A33-81B1-E442048409EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06C10CAA-A5FC-4A33-81B1-E442048409EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06C10CAA-A5FC-4A33-81B1-E442048409EB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

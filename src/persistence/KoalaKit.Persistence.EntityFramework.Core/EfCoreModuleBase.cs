@@ -28,7 +28,7 @@ namespace KoalaKit.Persistence.EFCore
             if (string.IsNullOrWhiteSpace(migrationsAssemblyName))
                 migrationsAssemblyName = GetDefaultMigrationAssemblyName();
 
-            koala.UseEfPersistence(options => Configure(options, connectionString, migrationsAssemblyName));
+            koala.UseEfPersistence(options => Configure(options, connectionString, migrationsAssemblyName), autoRunMigrations:false);
         }
         protected abstract void Configure(DbContextOptionsBuilder builder, string connectionString, string migrationsAssemblyName);
         protected virtual string GetDefaultConnectionString() => throw new Exception($"No connection string specified for the {ProviderName} provider");

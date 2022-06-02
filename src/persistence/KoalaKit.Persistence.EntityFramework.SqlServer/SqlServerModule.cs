@@ -7,6 +7,9 @@ namespace KoalaKit.Persistence.EFCore.SqlServer
         protected override string ProviderName => "SqlServer";
 
         protected override void Configure(DbContextOptionsBuilder builder, string connectionString, string migrationsAssemblyName)
-            => builder.ConfigureSqlServer(connectionString, migrationsAssemblyName);
+        {
+            Console.WriteLine("*************** SqlServerModule ***************");
+            builder.ConfigureSqlServer(connectionString, migrationsAssemblyName);
+        }
     }
 }
