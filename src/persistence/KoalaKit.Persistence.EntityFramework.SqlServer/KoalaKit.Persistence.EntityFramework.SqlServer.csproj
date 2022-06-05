@@ -5,11 +5,11 @@
 		<RootNamespace>KoalaKit.Persistence.EFCore.SqlServer</RootNamespace>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
-    <Description>Koalakit, Framework, web developments tool</Description>
-    <PackageTags>Koalakit, Framework, EfCore, Entities, Sql Server, web developments tool</PackageTags>
-    <PackageId>KoalaKit.Persistence.EFCore.SqlServer</PackageId>
-    <Version>1.0.3-alpha</Version>
-    <Authors>Koalakit.org</Authors>
+		<Description>Koalakit, Framework, web developments tool</Description>
+		<PackageTags>Koalakit, Framework, EfCore, Entities, Sql Server, web developments tool</PackageTags>
+		<PackageId>KoalaKit.Persistence.EFCore.SqlServer</PackageId>
+		<Version>1.0.5-alpha</Version>
+		<Authors>Koalakit.org</Authors>
 	</PropertyGroup>
 
 	<ItemGroup>
