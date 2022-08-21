@@ -1,7 +1,6 @@
 ﻿using System.Linq.Expressions;
 using EFCore.BulkExtensions;
 using KoalaKit.Persistence.Specifications;
-using KoalaKit.Specifications;
 using Microsoft.EntityFrameworkCore;
 
 namespace KoalaKit.Persistence.EFCore
@@ -109,7 +108,7 @@ namespace KoalaKit.Persistence.EFCore
             }, cancellationToken);
         }
 
-        protected Expression<Func<TEntity, bool>> MapSpecification(IEntityISpec<TEntity> specification) => specification.ToExpression();
+        protected Expression<Func<TEntity, bool>> MapSpecification(IEntityISpec<TEntity> specification) => specification.Criteria;
         protected IQueryable<TEntity> MapIncludes(IEntityISpec<TEntity> specification, IQueryable<TEntity> query)
         {
             query = specification.Includes.Aggregate(query, (current, include) => current.Include(include));
