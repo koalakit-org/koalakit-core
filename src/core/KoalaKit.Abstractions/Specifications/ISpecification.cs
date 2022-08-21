@@ -6,6 +6,5 @@ namespace KoalaKit.Specifications
     {
         bool IsSatisfiedBy(T candidate);
         Expression<Func<T, bool>> Criteria { get; }
-        List<Expression<Func<T, object>>> Includes { get; }
     }
 }

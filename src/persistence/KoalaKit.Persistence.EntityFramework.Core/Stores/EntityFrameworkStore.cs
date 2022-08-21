@@ -21,6 +21,8 @@ namespace KoalaKit.Persistence.EFCore
         {
             return await DoWork(async dbContext =>
             {
+                entity.CreatedUtc = DateTime.UtcNow;
+                entity.ExternalId = Guid.NewGuid();
                 var result = await dbContext.Set<TEntity>().AddAsync(entity, cancellationToken);
                 return result.Entity;
             }, cancellationToken);
@@ -34,11 +36,11 @@ namespace KoalaKit.Persistence.EFCore
             }, cancellationToken);
         }
 
-        public async Task<int> CountAsync(ISpecification<TEntity> specification, CancellationToken cancellationToken = default)
+        public async Task<int> CountAsync(IEntityISpec<TEntity> specification, CancellationToken cancellationToken = default)
         {
             return await DoWork(async dbContext =>
             {
-                var count = await dbContext.Set<TEntity>().CountAsync(specification.Criteria, cancellationToken);
+                var count = await dbContext.Set<TEntity>().CountAsync(MapSpecification(specification), cancellationToken);
                 return count;
             }, cancellationToken);
         }
@@ -52,46 +54,34 @@ namespace KoalaKit.Persistence.EFCore
             }, cancellationToken);
         }
 
-        public async Task<int> DeleteManyAsync(ISpecification<TEntity> specification, CancellationToken cancellationToken = default)
+        public async Task DeleteManyAsync(IEntityISpec<TEntity> specification, CancellationToken cancellationToken = default)
         {
-            return await DoWork(async dbContext =>
+            await DoWork(async dbContext =>
             {
                 var query = dbContext.Set<TEntity>().AsQueryable()
-                    .Where(specification.Criteria);
-                return await query.BatchDeleteAsync(cancellationToken);
+                    .Where(MapSpecification(specification));
+                await query.BatchDeleteAsync(cancellationToken);
             }, cancellationToken);
         }
 
-        public async Task<TEntity?> FindAsync(ISpecification<TEntity> specification, CancellationToken cancellationToken = default)
+        public async Task<TEntity?> FindAsync(IEntityISpec<TEntity> specification, CancellationToken cancellationToken = default)
         {
             return await DoWork(async dbContext =>
             {
-                var query = specification.Includes.Aggregate(dbContext.Set<TEntity>().AsQueryable(), (current, include) => current.Include(include));
+                var query = MapIncludes(specification, dbContext.Set<TEntity>().AsQueryable());
 
-                var result = await query.FirstOrDefaultAsync(specification.Criteria);
+                var result = await query.Where(MapSpecification(specification)).FirstOrDefaultAsync();
                 return result;
             }, cancellationToken);
         }
 
-        public async Task<IEnumerable<TEntity>> FindManyAsync(ISpecification<TEntity> specification, IOrderBy<TEntity>? orderBy = null, IPaging? paging = null, CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<TEntity>> ListAsync(IEntityISpec<TEntity> specification, CancellationToken cancellationToken = default)
         {
             return await DoWork(async dbContext =>
             {
+                var query = MapIncludes(specification, dbContext.Set<TEntity>().AsQueryable());
 
-                var query = specification.Includes.Aggregate(dbContext.Set<TEntity>().AsQueryable(), (current, include) => current.Include(include));
-
-                var queryable = query.Where(specification.Criteria);
-
-                if (orderBy != null)
-                {
-                    var orderByExpression = orderBy.OrderByExpression;
-                    queryable = orderBy.SortDirection == SortDirection.Ascending ? queryable.OrderBy(orderByExpression) : queryable.OrderByDescending(orderByExpression);
-                }
-
-                if (paging != null)
-                    queryable = queryable.Skip(paging.Skip).Take(paging.Take);
-
-                return await query.Where(specification.Criteria).ToListAsync(cancellationToken);
+                return await query.Where(MapSpecification(specification)).ToListAsync<TEntity>(cancellationToken);
             }, cancellationToken);
         }
 
@@ -99,12 +89,33 @@ namespace KoalaKit.Persistence.EFCore
         {
             await DoWork(async dbContext =>
             {
-                var modelToUpdate = await dbContext.Set<TEntity>().SingleOrDefaultAsync(e => e.Id == entity.Id || e.ExternalId == entity.ExternalId);
-                if (modelToUpdate != null) modelToUpdate = entity;
+                var dbSet = dbContext.Set<TEntity>();
+                entity.UpdatedUtc = DateTime.UtcNow;
+                dbContext.Entry(entity).State = EntityState.Modified;
             }, cancellationToken);
         }
-        
 
+
+        public async Task UpdateAsync(IEntityISpec<TEntity> specification, Func<TEntity?, ValueTask> update, CancellationToken cancellationToken = default)
+        {
+            await DoWork(async dbContext =>
+            {
+                var query = MapIncludes(specification, dbContext.Set<TEntity>().AsQueryable());
+                var entity = await query.Where(MapSpecification(specification)).FirstOrDefaultAsync();
+                await update(entity);
+                if (entity != null)
+                    entity.UpdatedUtc = DateTime.UtcNow;
+
+            }, cancellationToken);
+        }
+
+        protected Expression<Func<TEntity, bool>> MapSpecification(IEntityISpec<TEntity> specification) => specification.ToExpression();
+        protected IQueryable<TEntity> MapIncludes(IEntityISpec<TEntity> specification, IQueryable<TEntity> query)
+        {
+            query = specification.Includes.Aggregate(query, (current, include) => current.Include(include));
+            query = specification.IncludeStrings.Aggregate(query, (current, include) => current.Include(include));
+            return query;
+        }
         protected async ValueTask DoWork(Func<TContext, ValueTask> work, CancellationToken cancellationToken)
         {
             await using var dbContext = await dbContextFactory.CreateDbContextAsync(cancellationToken);
