@@ -11,7 +11,7 @@ namespace KoalaKit.Caching.Memory
             koala.AddKoalaCachingCore();
             koala.Services.AddMemoryCache();
             koala.Services.AddScoped<KoalaMemoryCache>();
-            koala.Services.AddScoped(typeof(ICacheProvider<>), typeof(MemoryCacheProvider<>));
+            koala.Services.AddScoped(typeof(ICacheProvider<>), typeof(KoalaMemoryCacheProvider<>));
             base.ConfigureKoala(koala);
         }
     }
