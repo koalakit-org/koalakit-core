@@ -2,11 +2,11 @@
 
 namespace KoalaKit.Caching.Memory
 {
-    public class MemoryCacheProvider<T> : ICacheProvider<T>
+    public class KoalaMemoryCacheProvider<T> : ICacheProvider<T>
     {
         private readonly IServiceProvider serviceProvider;
 
-        public MemoryCacheProvider(IServiceProvider serviceProvider)
+        public KoalaMemoryCacheProvider(IServiceProvider serviceProvider)
         {
             this.serviceProvider = serviceProvider;
         }

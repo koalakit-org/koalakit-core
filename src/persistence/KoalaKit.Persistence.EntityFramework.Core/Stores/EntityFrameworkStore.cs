@@ -84,17 +84,6 @@ namespace KoalaKit.Persistence.EFCore
             }, cancellationToken);
         }
 
-        public async Task UpdateAsync(TEntity entity, CancellationToken cancellationToken = default)
-        {
-            await DoWork(async dbContext =>
-            {
-                var dbSet = dbContext.Set<TEntity>();
-                entity.UpdatedUtc = DateTime.UtcNow;
-                dbContext.Entry(entity).State = EntityState.Modified;
-            }, cancellationToken);
-        }
-
-
         public async Task UpdateAsync(IEntityISpec<TEntity> specification, Func<TEntity?, ValueTask> update, CancellationToken cancellationToken = default)
         {
             await DoWork(async dbContext =>
