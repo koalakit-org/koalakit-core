@@ -7,7 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Koalakit" Version="1.0.6-alpha" />
+    <PackageReference Include="Koalakit.Abstractions" Version="1.0.6-alpha" />
+    <PackageReference Include="KoalaKit.Persistence.EFCore" Version="1.0.6-alpha" />
+    <PackageReference Include="KoalaKit.Persistence.EFCore.SqlServer" Version="1.0.6-alpha" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.2" />
   </ItemGroup>
 
 </Project>

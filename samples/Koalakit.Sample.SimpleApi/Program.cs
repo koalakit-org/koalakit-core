@@ -1,21 +1,19 @@
-using Microsoft.AspNetCore.Mvc;
+using Koalakit.Sample.SimpleApi.Entities.DbProviders;
+using KoalaKit.Extensions;
+using KoalaKit.Persistence.EFCore;
+using KoalaKit.Persistence.EFCore.SqlServer;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
-//// Register Modules
-//builder.Services.AddKoalaKitCore(builder => builder.AddModules(typeof(SqlServerModule)));
-//EntityProvidersCollection.AddDbEntityProvider(typeof(GenericDbEntityProvider).Assembly);
+builder.Services.AddKoalaKitCore(builder => builder.AddModules(typeof(SqlServerModule)));
+EntityProvidersCollection.AddDbEntityProvider(typeof(ForecastSqLDbProvider).Assembly);
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
