@@ -5,6 +5,12 @@
 	  <RootNamespace>KoalaKit.Persistence.EFCore.Sqlite</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <Description>Koalakit, Framework, web developments tool</Description>
+    <PackageTags>Koalakit, Framework, EfCore, Entities, Sqlite, web developments tool</PackageTags>
+    <PackageId>KoalaKit.Persistence.EFCore.Sqlite</PackageId>
+    <Version>1.0.7-alpha</Version>
+    <Authors>Koalakit.org</Authors>
+    <Company>Koalakit.org</Company>
   </PropertyGroup>
 
   <ItemGroup>

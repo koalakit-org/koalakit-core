@@ -8,8 +8,9 @@
     <Description>Koalakit, Framework, web developments tool</Description>
     <PackageTags>Koalakit, Framework, EfCore, Entities, web developments tool</PackageTags>
     <PackageId>KoalaKit.Persistence.EFCore</PackageId>
-    <Version>1.0.5-alpha</Version>
+    <Version>1.0.7-alpha</Version>
     <Authors>Koalakit.org</Authors>
+    <Company>Koalakit.org</Company>
 	</PropertyGroup>
 
 	<ItemGroup>

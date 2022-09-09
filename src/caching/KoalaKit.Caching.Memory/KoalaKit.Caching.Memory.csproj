@@ -4,6 +4,11 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <PackageTags>Koalakit, Framework, web developments tool, .NET6</PackageTags>
+    <PackageId>KoalaKit.Caching.Memory</PackageId>
+    <Version>1.0.7-alpha</Version>
+    <Authors>Koalakit.org</Authors>
+    <Company>Koalakit.org</Company>
   </PropertyGroup>
 
   <ItemGroup>
