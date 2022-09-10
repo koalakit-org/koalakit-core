@@ -5,7 +5,7 @@ namespace KoalaKit.Persistence.Specifications
     public abstract class EntityISpec<T> : IEntityISpec<T>
         where T : IKoalaEntity
     {
-        private Expression<Func<T, bool>>? criteria;
+        private Expression<Func<T, bool>> criteria = a => true;
         private List<Expression<Func<T, object>>> includes = new();
         private List<string> includesString = new();
 
