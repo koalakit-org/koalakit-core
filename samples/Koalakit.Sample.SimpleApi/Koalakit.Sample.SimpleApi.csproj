@@ -8,7 +8,7 @@
 
   <ItemGroup>
     <PackageReference Include="Koalakit" Version="1.0.7-alpha" />
-    <PackageReference Include="Koalakit.Abstractions" Version="1.0.8-alpha" />
+    <PackageReference Include="Koalakit.Abstractions" Version="1.0.9-alpha" />
     <PackageReference Include="KoalaKit.Persistence.EFCore" Version="1.0.7-alpha" />
     <PackageReference Include="KoalaKit.Persistence.EFCore.SqlServer" Version="1.0.7-alpha" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
