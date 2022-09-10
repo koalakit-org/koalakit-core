@@ -7,7 +7,7 @@ namespace KoalaKit.Persistence.Specifications
     {
         private Expression<Func<T, bool>> criteria = a => true;
         private List<Expression<Func<T, object>>> includes = new();
-        private List<string> includesString = new();
+        private List<string> includesStrings = new();
 
         public bool IsSatisfiedBy(T candidate)
         {
@@ -19,7 +19,7 @@ namespace KoalaKit.Persistence.Specifications
 
         public Expression<Func<T, bool>> Criteria => criteria ?? (a => true);
         public List<Expression<Func<T, object>>> Includes => includes;
-        public List<string> IncludeStrings => IncludeStrings;
+        public List<string> IncludeStrings => includesStrings;
 
         protected virtual void AddCriteria(Expression<Func<T, bool>> newCriteria)
         {
@@ -37,7 +37,7 @@ namespace KoalaKit.Persistence.Specifications
 
         protected virtual void AddInclude(string includeExpression)
         {
-            includesString.Add(includeExpression);
+            includesStrings.Add(includeExpression);
         }
     }
 }
