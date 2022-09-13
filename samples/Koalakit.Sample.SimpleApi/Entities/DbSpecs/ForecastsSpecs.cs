@@ -2,23 +2,17 @@
 
 namespace Koalakit.Sample.SimpleApi.Entities.DbSpecs
 {
-    public class ForecastsSpecs : EntityISpec<Forecast>
+    public class ForecastsSpecs : EntitySpecification<Forecast>
     {
-        public ForecastsSpecs ByExternalId(Guid? externalId)
+        public ForecastsSpecs ByExternalId(Guid externalId)
         {
-            if(externalId != null)
-            {
-                AddCriteria(a => a.ExternalId == externalId);
-            }
+            AddCriteria(a => a.ExternalId == externalId);
             return this;
         }
 
-        public ForecastsSpecs ByDate(DateTime? date)
+        public ForecastsSpecs ByDate(DateTime date)
         {
-            if(date.HasValue)
-            {
-                AddCriteria(a => a.Date.Date == date.Value.Date);
-            }
+            AddCriteria(a => a.Date.Date == date);
             return this;
         }
     }

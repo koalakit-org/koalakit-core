@@ -2,10 +2,10 @@
 
 namespace KoalaKit.Persistence.Specifications
 {
-    public abstract class EntityISpec<T> : IEntityISpec<T>
+    public abstract class EntitySpecification<T> : IEntitySpecification<T>
         where T : IKoalaEntity
     {
-        private Expression<Func<T, bool>> criteria = a => true;
+        private Expression<Func<T, bool>> criteria;
         private List<Expression<Func<T, object>>> includes = new();
         private List<string> includesStrings = new();
 
@@ -17,13 +17,19 @@ namespace KoalaKit.Persistence.Specifications
             return predicate(candidate);
         }
 
-        public Expression<Func<T, bool>> Criteria => criteria ?? (a => true);
+        public Expression<Func<T, bool>> Criteria => criteria;
         public List<Expression<Func<T, object>>> Includes => includes;
         public List<string> IncludeStrings => includesStrings;
 
         protected virtual void AddCriteria(Expression<Func<T, bool>> newCriteria)
         {
             if (newCriteria == null) return;
+
+            if(criteria == null)
+            {
+                criteria = newCriteria;
+                return;
+            }
 
             var invokedExpression = Expression.Invoke(newCriteria, criteria.Parameters.Cast<Expression>());
             var binary = Expression.AndAlso(criteria.Body, invokedExpression);

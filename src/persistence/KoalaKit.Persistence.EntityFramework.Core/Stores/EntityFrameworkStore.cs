@@ -35,11 +35,11 @@ namespace KoalaKit.Persistence.EFCore
             }, cancellationToken);
         }
 
-        public async Task<int> CountAsync(IEntityISpec<TEntity> specification, CancellationToken cancellationToken = default)
+        public async Task<int> CountAsync(IEntitySpecification<TEntity> specification, CancellationToken cancellationToken = default)
         {
             return await DoWork(async dbContext =>
             {
-                var count = await dbContext.Set<TEntity>().CountAsync(MapSpecification(specification), cancellationToken);
+                var count = await MapSpecification(dbContext.Set<TEntity>().AsQueryable(), specification).CountAsync();
                 return count;
             }, cancellationToken);
         }
@@ -53,43 +53,42 @@ namespace KoalaKit.Persistence.EFCore
             }, cancellationToken);
         }
 
-        public async Task DeleteManyAsync(IEntityISpec<TEntity> specification, CancellationToken cancellationToken = default)
+        public async Task DeleteManyAsync(IEntitySpecification<TEntity> specification, CancellationToken cancellationToken = default)
         {
             await DoWork(async dbContext =>
             {
-                var query = dbContext.Set<TEntity>().AsQueryable()
-                    .Where(MapSpecification(specification));
+                var query = MapSpecification(dbContext.Set<TEntity>().AsQueryable(), specification);
                 await query.BatchDeleteAsync(cancellationToken);
             }, cancellationToken);
         }
 
-        public async Task<TEntity?> FindAsync(IEntityISpec<TEntity> specification, CancellationToken cancellationToken = default)
+        public async Task<TEntity?> FindAsync(IEntitySpecification<TEntity> specification, CancellationToken cancellationToken = default)
         {
             return await DoWork(async dbContext =>
             {
                 var query = MapIncludes(specification, dbContext.Set<TEntity>().AsQueryable());
 
-                var result = await query.Where(MapSpecification(specification)).FirstOrDefaultAsync();
+                var result = await MapSpecification(query, specification).FirstOrDefaultAsync();
                 return result;
             }, cancellationToken);
         }
 
-        public async Task<IEnumerable<TEntity>> ListAsync(IEntityISpec<TEntity> specification, CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<TEntity>> ListAsync(IEntitySpecification<TEntity> specification, CancellationToken cancellationToken = default)
         {
             return await DoWork(async dbContext =>
             {
                 var query = MapIncludes(specification, dbContext.Set<TEntity>().AsQueryable());
 
-                return await query.Where(MapSpecification(specification)).ToListAsync<TEntity>(cancellationToken);
+                return await MapSpecification(query, specification).ToListAsync<TEntity>(cancellationToken);
             }, cancellationToken);
         }
 
-        public async Task UpdateAsync(IEntityISpec<TEntity> specification, Func<TEntity?, ValueTask> update, CancellationToken cancellationToken = default)
+        public async Task UpdateAsync(IEntitySpecification<TEntity> specification, Func<TEntity?, ValueTask> update, CancellationToken cancellationToken = default)
         {
             await DoWork(async dbContext =>
             {
                 var query = MapIncludes(specification, dbContext.Set<TEntity>().AsQueryable());
-                var entity = await query.Where(MapSpecification(specification)).FirstOrDefaultAsync();
+                var entity = await MapSpecification(query, specification).FirstOrDefaultAsync();
                 await update(entity);
                 if (entity != null)
                     entity.UpdatedUtc = DateTime.UtcNow;
@@ -97,8 +96,13 @@ namespace KoalaKit.Persistence.EFCore
             }, cancellationToken);
         }
 
-        protected Expression<Func<TEntity, bool>> MapSpecification(IEntityISpec<TEntity> specification) => specification.Criteria;
-        protected IQueryable<TEntity> MapIncludes(IEntityISpec<TEntity> specification, IQueryable<TEntity> query)
+        protected IQueryable<TEntity> MapSpecification(IQueryable<TEntity> query, IEntitySpecification<TEntity> specification)
+        {
+            if (specification.Criteria != null)
+                query.Where(specification.Criteria);
+            return query;
+        }
+        protected IQueryable<TEntity> MapIncludes(IEntitySpecification<TEntity> specification, IQueryable<TEntity> query)
         {
             query = specification.Includes.Aggregate(query, (current, include) => current.Include(include));
             query = specification.IncludeStrings.Aggregate(query, (current, include) => current.Include(include));

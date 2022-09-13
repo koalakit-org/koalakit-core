@@ -6,7 +6,7 @@
     <Nullable>enable</Nullable>
     <PackageTags>Koalakit, Framework, web developments tool, .NET6</PackageTags>
     <PackageId>KoalaKit.Caching.Memory</PackageId>
-    <Version>1.0.7-alpha</Version>
+    <Version>1.0.10-alpha</Version>
     <Authors>Koalakit.org</Authors>
     <Company>Koalakit.org</Company>
   </PropertyGroup>

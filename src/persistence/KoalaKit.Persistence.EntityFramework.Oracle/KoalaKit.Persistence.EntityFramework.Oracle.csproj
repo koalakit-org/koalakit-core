@@ -8,7 +8,7 @@
     <Description>Koalakit, Framework, web developments tool</Description>
     <PackageTags>Koalakit, Framework, EfCore, Entities, Oracle, web developments tool</PackageTags>
     <PackageId>KoalaKit.Persistence.EFCore.Oracle</PackageId>
-    <Version>1.0.7-alpha</Version>
+    <Version>1.0.10-alpha</Version>
     <Authors>Koalakit.org</Authors>
     <Company>Koalakit.org</Company>
   </PropertyGroup>
