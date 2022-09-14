@@ -99,7 +99,7 @@ namespace KoalaKit.Persistence.EFCore
         protected IQueryable<TEntity> MapSpecification(IQueryable<TEntity> query, IEntitySpecification<TEntity> specification)
         {
             if (specification.Criteria != null)
-                query.Where(specification.Criteria);
+                query = query.Where(specification.Criteria);
             return query;
         }
         protected IQueryable<TEntity> MapIncludes(IEntitySpecification<TEntity> specification, IQueryable<TEntity> query)
