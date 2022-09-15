@@ -1,7 +1,5 @@
 ﻿using Koalakit.Sample.SimpleApi.ActionModels;
-using Koalakit.Sample.SimpleApi.Entities;
-using Koalakit.Sample.SimpleApi.Entities.DbSpecs;
-using KoalaKit.Persistence;
+using Koalakit.Sample.SimpleApi.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Koalakit.Sample.SimpleApi.Controllers
@@ -10,57 +8,40 @@ namespace Koalakit.Sample.SimpleApi.Controllers
     [Route("weather/forecasts")]
     public class WeatherForecastController : ControllerBase
     {
-        private readonly ILogger<WeatherForecastController> logger;
-        private readonly IStore<Forecast> store;
+        private readonly WeatherForecastsService forecastsService;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger, IStore<Forecast> store)
+        public WeatherForecastController(WeatherForecastsService forecastsService)
         {
-            this.logger = logger;
-            this.store = store;
+            this.forecastsService = forecastsService;
         }
 
         [HttpGet]
         public async Task<ActionResult<ForecastFetchResult>> Get([FromQuery] Guid? id)
         {
-            var spec = new ForecastsSpecs();
-
-            if (id.HasValue) spec.ByExternalId(id.Value);
-
-            var forecast = await store.FindAsync(spec);
+            var forecast = await forecastsService.Get(id);
             if (forecast == null)
             {
                 return NotFound();
             }
-            return Ok(new ForecastFetchResult(forecast.ExternalId, forecast.Date, forecast.TemperatureC, forecast.TemperatureF));
+            return Ok(forecast);
         }
 
         [HttpGet("get")]
-        public async Task<ActionResult<IEnumerable<ForecastFetchResult>>> Get([FromQuery] Guid? id, DateTime? date)
+        public async Task<ActionResult<IEnumerable<ForecastFetchResult>>> Get([FromQuery] DateTime? date)
         {
-            var spec = new ForecastsSpecs();
-
-            if (date.HasValue) spec.ByDate(date.Value);
-
-            if (id.HasValue) spec.ByExternalId(id.Value);
-
-            var list = await store.ListAsync(spec);
+            var list = await forecastsService.Get( date);
 
             if (list == null)
             {
                 return Ok(Enumerable.Empty<ForecastFetchResult>());
             }
-            var result = list.Select(a => new ForecastFetchResult(a.ExternalId, a.Date, a.TemperatureC, a.TemperatureF));
-            return Ok(result);
+            return Ok(list);
         }
 
         [HttpPost(Name = "create")]
         public async Task<IActionResult> Post([FromBody] ForecastCreateParameters parameters)
         {
-            await store.AddAsync(new Forecast
-            {
-                Date = parameters.Date,
-                TemperatureC = parameters.Temp,
-            });
+            await forecastsService.Create(parameters);
             return Ok();
         }
     }
