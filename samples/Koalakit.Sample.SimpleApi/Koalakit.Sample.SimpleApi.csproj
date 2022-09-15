@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\core\KoalaKit.Abstractions\KoalaKit.Abstractions.csproj" />
+    <ProjectReference Include="..\..\src\messaging\queuing\KoalaKit.Queuing.RabbitMq\KoalaKit.Queuing.RabbitMq.csproj" />
     <ProjectReference Include="..\..\src\persistence\KoalaKit.Persistence.EntityFramework.Core\KoalaKit.Persistence.EntityFramework.Core.csproj" />
     <ProjectReference Include="..\..\src\persistence\KoalaKit.Persistence.EntityFramework.SqlServer\KoalaKit.Persistence.EntityFramework.SqlServer.csproj" />
   </ItemGroup>

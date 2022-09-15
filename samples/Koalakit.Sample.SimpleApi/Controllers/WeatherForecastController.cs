@@ -1,5 +1,6 @@
 ﻿using Koalakit.Sample.SimpleApi.ActionModels;
 using Koalakit.Sample.SimpleApi.Services;
+using KoalaKit.Messaging.Queuing;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Koalakit.Sample.SimpleApi.Controllers
@@ -9,10 +10,12 @@ namespace Koalakit.Sample.SimpleApi.Controllers
     public class WeatherForecastController : ControllerBase
     {
         private readonly WeatherForecastsService forecastsService;
+        private IMessageQueuingPublisher<WeatherForecastsPublishingParameters> publisher;
 
-        public WeatherForecastController(WeatherForecastsService forecastsService)
+        public WeatherForecastController(WeatherForecastsService forecastsService, IMessageQueuingPublisher<WeatherForecastsPublishingParameters> publisher)
         {
             this.forecastsService = forecastsService;
+            this.publisher = publisher;
         }
 
         [HttpGet]
@@ -39,9 +42,13 @@ namespace Koalakit.Sample.SimpleApi.Controllers
         }
 
         [HttpPost(Name = "create")]
-        public async Task<IActionResult> Post([FromBody] ForecastCreateParameters parameters)
+        public IActionResult Post([FromBody] ForecastCreateParameters parameters)
         {
-            await forecastsService.Create(parameters);
+            publisher.Publish(new WeatherForecastsPublishingParameters
+            {
+                Date = parameters.Date,
+                Temp = parameters.Temp,
+            });
             return Ok();
         }
     }
