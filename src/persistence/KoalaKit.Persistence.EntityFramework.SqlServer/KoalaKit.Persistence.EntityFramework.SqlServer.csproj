@@ -8,13 +8,13 @@
 		<Description>Koalakit, Framework, web developments tool</Description>
 		<PackageTags>Koalakit, Framework, EfCore, Entities, Sql Server, web developments tool</PackageTags>
 		<PackageId>KoalaKit.Persistence.EFCore.SqlServer</PackageId>
-    <Version>1.0.6-alpha</Version>
-		<Authors>Koalakit.org</Authors>
+    <Version>1.0.10-alpha</Version>
+    <Authors>Koalakit.org</Authors>
+    <Company>Koalakit.org</Company>
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.2" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer.Design" Version="1.1.6" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.8" />
 	</ItemGroup>
 
 	<ItemGroup>

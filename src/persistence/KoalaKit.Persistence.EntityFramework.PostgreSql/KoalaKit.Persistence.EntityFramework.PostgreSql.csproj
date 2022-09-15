@@ -5,10 +5,16 @@
 	  <RootNamespace>KoalaKit.Persistence.EFCore.PostgreSql</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <Description>Koalakit, Framework, web developments tool</Description>
+    <PackageTags>Koalakit, Framework, EfCore, Entities, PostgreSql, web developments tool</PackageTags>
+    <PackageId>KoalaKit.Persistence.EFCore.PostgreSql</PackageId>
+    <Version>1.0.10-alpha</Version>
+    <Authors>Koalakit.org</Authors>
+    <Company>Koalakit.org</Company>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="6.0.3" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="6.0.6" />
   </ItemGroup>
 
   <ItemGroup>

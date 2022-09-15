@@ -1,14 +1,19 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<TargetFramework>net6.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
-		<Nullable>enable</Nullable>
+    <Nullable>enable</Nullable>
+    <PackageTags>Koalakit, Framework, web developments tool, .NET6</PackageTags>
+    <PackageId>KoalaKit.Messaging.Bus.Redis</PackageId>
+    <Version>1.0.10-alpha</Version>
+    <Authors>Koalakit.org</Authors>
+    <Company>Koalakit.org</Company>
 	</PropertyGroup>
 
 
 	<ItemGroup>
-		<PackageReference Include="StackExchange.Redis" Version="2.2.88" />
+		<PackageReference Include="StackExchange.Redis" Version="2.6.66" />
 	</ItemGroup>
 
 

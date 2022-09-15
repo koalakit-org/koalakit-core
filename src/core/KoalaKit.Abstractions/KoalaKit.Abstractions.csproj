@@ -5,10 +5,9 @@
 		<RootNamespace>KoalaKit</RootNamespace>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
-		<Description>Koalakit, Framework, web developments tool</Description>
-		<PackageTags>Koalakit, Framework, web developments tool</PackageTags>
+		<PackageTags>Koalakit, Framework, web developments tool, .NET6</PackageTags>
 		<PackageId>Koalakit.Abstractions</PackageId>
-    <Version>1.0.6-alpha</Version>
+		<Version>1.0.10-alpha</Version>
 		<Authors>Koalakit.org</Authors>
 	</PropertyGroup>
 

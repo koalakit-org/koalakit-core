@@ -32,6 +32,8 @@ namespace KoalaKit.Queuing.RabbitMq
             model.BasicQos(0, 1, false);
             var consumer = new EventingBasicConsumer(model);
             consumer.Received += Consumer_Received!;
+            model.BasicConsume(queue.Name, false, "", noLocal: false, exclusive: false, null, consumer);
+
         }
 
         private async void Consumer_Received(object sender, BasicDeliverEventArgs eventArgs)
