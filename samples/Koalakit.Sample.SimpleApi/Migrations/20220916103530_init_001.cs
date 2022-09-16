@@ -5,16 +5,16 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Koalakit.Sample.SimpleApi.Migrations
 {
-    public partial class init_0 : Migration
+    public partial class init_001 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.EnsureSchema(
-                name: "Koala");
+                name: "dbo");
 
             migrationBuilder.CreateTable(
                 name: "Forecasts",
-                schema: "Koala",
+                schema: "dbo",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -36,7 +36,7 @@ namespace Koalakit.Sample.SimpleApi.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Forecasts",
-                schema: "Koala");
+                schema: "dbo");
         }
     }
 }

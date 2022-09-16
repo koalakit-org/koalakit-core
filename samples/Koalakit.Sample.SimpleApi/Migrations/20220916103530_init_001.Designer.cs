@@ -12,15 +12,15 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Koalakit.Sample.SimpleApi.Migrations
 {
     [DbContext(typeof(KoalaDbContext))]
-    [Migration("20220908214006_init_0")]
-    partial class init_0
+    [Migration("20220916103530_init_001")]
+    partial class init_001
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasDefaultSchema("Koala")
-                .HasAnnotation("ProductVersion", "6.0.2")
+                .HasDefaultSchema("dbo")
+                .HasAnnotation("ProductVersion", "6.0.8")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
@@ -53,7 +53,7 @@ namespace Koalakit.Sample.SimpleApi.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Forecasts", "Koala");
+                    b.ToTable("Forecasts", "dbo");
                 });
 #pragma warning restore 612, 618
         }
