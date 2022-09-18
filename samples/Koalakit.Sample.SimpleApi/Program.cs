@@ -4,6 +4,7 @@ using Koalakit.Sample.SimpleApi.Handlers;
 using Koalakit.Sample.SimpleApi.Services;
 using KoalaKit.Extensions;
 using KoalaKit.Messaging;
+using KoalaKit.Messaging.Queuing.Extensions;
 using KoalaKit.Persistence.EFCore;
 using KoalaKit.Persistence.EFCore.SqlServer;
 using KoalaKit.Queuing.RabbitMq;
@@ -28,6 +29,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.RunQueuingConsumers(typeof(WeatherForecastsPublishingParameters));
 app.UseHttpsRedirection();
 
 app.UseAuthorization();

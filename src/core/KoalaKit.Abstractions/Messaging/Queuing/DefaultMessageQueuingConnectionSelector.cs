@@ -4,7 +4,7 @@ namespace KoalaKit.Messaging.Queuing
 {
     public class DefaultMessageQueuingConnectionSelector<TMessage> : IMessageQueuingConnectionSelector<TMessage> where TMessage : IQueuingMessage, new()
     {
-        private const string defaultConnectionName  = "default";
+        private const string defaultConnectionName = "default";
         private readonly MessageQueuingOptions options;
 
         public DefaultMessageQueuingConnectionSelector(IOptions<MessageQueuingOptions> options)
@@ -16,6 +16,13 @@ namespace KoalaKit.Messaging.Queuing
         }
 
         public MessageQueuingConnectionDefinition Select() => options.Connections[defaultConnectionName];
-        public MessageQueuingConnectionDefinition Select(string identifier) => options.Connections[identifier];
+        public MessageQueuingConnectionDefinition Select(string identifier)
+        {
+            if (options.Connections.ContainsKey(identifier))
+                return options.Connections[identifier];
+
+            return Select();
+
+        }
     }
 }
