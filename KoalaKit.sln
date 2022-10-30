@@ -55,7 +55,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KoalaKit.Caching.Redis", "s
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{EA45ABB8-D303-4CFD-811A-F39D85F97D56}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Koalakit.Sample.SimpleApi", "samples\Koalakit.Sample.SimpleApi\Koalakit.Sample.SimpleApi.csproj", "{094B2303-8376-4978-9101-98CC1FDAC43A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Koalakit.Sample.SimpleApi", "samples\Koalakit.Sample.SimpleApi\Koalakit.Sample.SimpleApi.csproj", "{094B2303-8376-4978-9101-98CC1FDAC43A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NoSql", "NoSql", "{D5F56A7E-8F24-4054-BDE9-86ED58F038A9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KoalaKit.Persistence.MongoDb", "src\persistence\noSql\KoalaKit.Persistence.MongoDb\KoalaKit.Persistence.MongoDb.csproj", "{5C966DF9-F354-41C2-BE5C-157568901873}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -131,6 +135,10 @@ Global
 		{094B2303-8376-4978-9101-98CC1FDAC43A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{094B2303-8376-4978-9101-98CC1FDAC43A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{094B2303-8376-4978-9101-98CC1FDAC43A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C966DF9-F354-41C2-BE5C-157568901873}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C966DF9-F354-41C2-BE5C-157568901873}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C966DF9-F354-41C2-BE5C-157568901873}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C966DF9-F354-41C2-BE5C-157568901873}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -160,6 +168,8 @@ Global
 		{C67151BF-2868-456B-A036-310EF8CE5B58} = {03D97B8E-DB45-4987-9ED7-02E6EF166393}
 		{29E89CFB-283F-412E-90D8-FB2D2E174832} = {C3DBA4D1-7001-485D-82CF-DD392FC02BAF}
 		{094B2303-8376-4978-9101-98CC1FDAC43A} = {EA45ABB8-D303-4CFD-811A-F39D85F97D56}
+		{D5F56A7E-8F24-4054-BDE9-86ED58F038A9} = {08D49CFC-A317-4690-80BA-D968ACC2EC9A}
+		{5C966DF9-F354-41C2-BE5C-157568901873} = {D5F56A7E-8F24-4054-BDE9-86ED58F038A9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3CD0F0D3-7D75-4E79-AFB4-7FA03F34D0AF}
