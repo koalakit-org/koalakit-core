@@ -62,6 +62,17 @@ namespace KoalaKit.Persistence.EFCore
             }, cancellationToken);
         }
 
+        public async Task<TEntity?> GetLastItem(IEntitySpecification<TEntity> specification, CancellationToken cancellationToken = default)
+        {
+            return await DoWork(async dbContext =>
+            {
+                var query = MapIncludes(specification, dbContext.Set<TEntity>().AsQueryable());
+
+                var result = await MapSpecification(query, specification).OrderByDescending(a => a.CreatedUtc).FirstOrDefaultAsync();
+                return result;
+            }, cancellationToken);
+
+        }
         public async Task<TEntity?> FindAsync(IEntitySpecification<TEntity> specification, CancellationToken cancellationToken = default)
         {
             return await DoWork(async dbContext =>
