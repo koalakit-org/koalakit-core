@@ -8,7 +8,7 @@
     <Description>Koalakit, Framework, web developments tool</Description>
     <PackageTags>Koalakit, Framework, EfCore, Entities, Sqlite, web developments tool</PackageTags>
     <PackageId>KoalaKit.Persistence.EFCore.Sqlite</PackageId>
-    <Version>1.0.10-alpha</Version>
+    <Version>1.0.11-alpha</Version>
     <Authors>Koalakit.org</Authors>
     <Company>Koalakit.org</Company>
   </PropertyGroup>
