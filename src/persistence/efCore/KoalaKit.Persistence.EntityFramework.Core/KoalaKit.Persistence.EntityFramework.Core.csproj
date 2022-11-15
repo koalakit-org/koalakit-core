@@ -4,6 +4,16 @@
     <TargetFramework>net7.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+
+    <RootNamespace>KoalaKit.Persistence.EFCore</RootNamespace>
+    <PackageTags>Koalakit, Framework, Modularity, .NET7, EfCore, Storage, Database, Store</PackageTags>
+    <PackageId>KoalaKit.Persistence.EFCore</PackageId>
+    <Version>7.0.0-alpha</Version>
+    <Authors>Koalakit.org</Authors>
+    <Description>
+      Koala kit is a solution template that built using the .NET stack. currently .NET7
+      The koalaKit EF Core persistence module contains all the abstraction services for handling EF core providers.
+    </Description>
   </PropertyGroup>
 
   <ItemGroup>
