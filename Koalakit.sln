@@ -23,7 +23,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "queuing", "queuing", "{BE68
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KoalaKit.Queuing.RabbitMq", "src\messaging\queuing\KoalaKit.Queuing.RabbitMq\KoalaKit.Queuing.RabbitMq.csproj", "{09548351-10C4-4B9A-8E0D-EFA6DDF80724}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KoalaKit.Bus.Redis", "messaging\bus\KoalaKit.Bus.Redis\KoalaKit.Bus.Redis.csproj", "{34C31A98-2F4D-430D-AED4-407814CFB761}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "persistence", "persistence", "{0B942E75-D16B-4DDB-9DDA-3AFC4E8024B4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "efCore", "efCore", "{CFFA173C-AA15-4B6C-A015-6EE5D3226018}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KoalaKit.Persistence.EntityFramework.Core", "src\persistence\efCore\KoalaKit.Persistence.EntityFramework.Core\KoalaKit.Persistence.EntityFramework.Core.csproj", "{21664CED-CCFF-471D-9415-B965708C9884}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,10 +51,10 @@ Global
 		{09548351-10C4-4B9A-8E0D-EFA6DDF80724}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{09548351-10C4-4B9A-8E0D-EFA6DDF80724}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{09548351-10C4-4B9A-8E0D-EFA6DDF80724}.Release|Any CPU.Build.0 = Release|Any CPU
-		{34C31A98-2F4D-430D-AED4-407814CFB761}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{34C31A98-2F4D-430D-AED4-407814CFB761}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{34C31A98-2F4D-430D-AED4-407814CFB761}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{34C31A98-2F4D-430D-AED4-407814CFB761}.Release|Any CPU.Build.0 = Release|Any CPU
+		{21664CED-CCFF-471D-9415-B965708C9884}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21664CED-CCFF-471D-9415-B965708C9884}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21664CED-CCFF-471D-9415-B965708C9884}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21664CED-CCFF-471D-9415-B965708C9884}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -65,7 +69,9 @@ Global
 		{580C0823-B579-4F8E-A8E0-F1DDBED9BF08} = {DAF1FB58-9780-4688-A658-6B7CCC10AC38}
 		{BE680AE5-024A-4E6A-801A-E842E076A3D9} = {DAF1FB58-9780-4688-A658-6B7CCC10AC38}
 		{09548351-10C4-4B9A-8E0D-EFA6DDF80724} = {BE680AE5-024A-4E6A-801A-E842E076A3D9}
-		{34C31A98-2F4D-430D-AED4-407814CFB761} = {580C0823-B579-4F8E-A8E0-F1DDBED9BF08}
+		{0B942E75-D16B-4DDB-9DDA-3AFC4E8024B4} = {1F4E911F-A68B-4800-A862-FD37904FA039}
+		{CFFA173C-AA15-4B6C-A015-6EE5D3226018} = {0B942E75-D16B-4DDB-9DDA-3AFC4E8024B4}
+		{21664CED-CCFF-471D-9415-B965708C9884} = {CFFA173C-AA15-4B6C-A015-6EE5D3226018}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {45134D12-1CC0-42EB-B42E-E600A6EE50CA}
