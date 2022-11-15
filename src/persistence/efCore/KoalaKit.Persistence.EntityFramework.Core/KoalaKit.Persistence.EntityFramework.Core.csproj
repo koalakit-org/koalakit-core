@@ -6,7 +6,7 @@
     <Nullable>enable</Nullable>
 
     <RootNamespace>KoalaKit.Persistence.EFCore</RootNamespace>
-    <PackageTags>Koalakit, Framework, Modularity, .NET7, EfCore, Storage, Database, Store</PackageTags>
+    <PackageTags>Koalakit, Framework, Modularity, .NET7, EfCore, Storage, Database, Store, RelationalDB</PackageTags>
     <PackageId>KoalaKit.Persistence.EFCore</PackageId>
     <Version>7.0.0-alpha</Version>
     <Authors>Koalakit.org</Authors>
