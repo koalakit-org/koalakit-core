@@ -3,12 +3,41 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{1F4E911F-A68B-4800-A862-FD37904FA039}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "core", "core", "{406C9723-63E2-493F-A9F2-4ABFEC5419C7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KoalaKit.Abstractions", "src\core\KoalaKit.Abstractions\KoalaKit.Abstractions.csproj", "{A51CD12E-049B-431E-9954-19E20C7554BA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "caching", "caching", "{5CE9E7B7-9EA2-440D-A856-1153099B1F70}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KoalaKit.Caching.Memory", "src\caching\KoalaKit.Caching.Memory\KoalaKit.Caching.Memory.csproj", "{180F55C9-783F-41D4-A73D-38CE653943AD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A51CD12E-049B-431E-9954-19E20C7554BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A51CD12E-049B-431E-9954-19E20C7554BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A51CD12E-049B-431E-9954-19E20C7554BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A51CD12E-049B-431E-9954-19E20C7554BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{180F55C9-783F-41D4-A73D-38CE653943AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{180F55C9-783F-41D4-A73D-38CE653943AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{180F55C9-783F-41D4-A73D-38CE653943AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{180F55C9-783F-41D4-A73D-38CE653943AD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{406C9723-63E2-493F-A9F2-4ABFEC5419C7} = {1F4E911F-A68B-4800-A862-FD37904FA039}
+		{A51CD12E-049B-431E-9954-19E20C7554BA} = {406C9723-63E2-493F-A9F2-4ABFEC5419C7}
+		{5CE9E7B7-9EA2-440D-A856-1153099B1F70} = {1F4E911F-A68B-4800-A862-FD37904FA039}
+		{180F55C9-783F-41D4-A73D-38CE653943AD} = {5CE9E7B7-9EA2-440D-A856-1153099B1F70}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {45134D12-1CC0-42EB-B42E-E600A6EE50CA}
 	EndGlobalSection
 EndGlobal
