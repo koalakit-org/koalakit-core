@@ -31,6 +31,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KoalaKit.Persistence.Entity
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KoalaKit.Persistence.EntityFramework.SqlServer", "src\persistence\efCore\KoalaKit.Persistence.EntityFramework.SqlServer\KoalaKit.Persistence.EntityFramework.SqlServer.csproj", "{B851958E-EC98-4E1B-9E8F-078C57B62C1C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KoalaKit.Bus.Redis", "src\messaging\bus\KoalaKit.Bus.Redis\KoalaKit.Bus.Redis.csproj", "{641C1C75-6A02-436B-95F4-192229399715}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -61,6 +63,10 @@ Global
 		{B851958E-EC98-4E1B-9E8F-078C57B62C1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B851958E-EC98-4E1B-9E8F-078C57B62C1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B851958E-EC98-4E1B-9E8F-078C57B62C1C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{641C1C75-6A02-436B-95F4-192229399715}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{641C1C75-6A02-436B-95F4-192229399715}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{641C1C75-6A02-436B-95F4-192229399715}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{641C1C75-6A02-436B-95F4-192229399715}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -79,6 +85,7 @@ Global
 		{CFFA173C-AA15-4B6C-A015-6EE5D3226018} = {0B942E75-D16B-4DDB-9DDA-3AFC4E8024B4}
 		{21664CED-CCFF-471D-9415-B965708C9884} = {CFFA173C-AA15-4B6C-A015-6EE5D3226018}
 		{B851958E-EC98-4E1B-9E8F-078C57B62C1C} = {CFFA173C-AA15-4B6C-A015-6EE5D3226018}
+		{641C1C75-6A02-436B-95F4-192229399715} = {580C0823-B579-4F8E-A8E0-F1DDBED9BF08}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {45134D12-1CC0-42EB-B42E-E600A6EE50CA}
