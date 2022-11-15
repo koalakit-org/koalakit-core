@@ -13,6 +13,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "caching", "caching", "{5CE9
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KoalaKit.Caching.Memory", "src\caching\KoalaKit.Caching.Memory\KoalaKit.Caching.Memory.csproj", "{180F55C9-783F-41D4-A73D-38CE653943AD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KoalaKit.Caching.Redis", "src\caching\KoalaKit.Caching.Redis\KoalaKit.Caching.Redis.csproj", "{C30DDA1A-99AE-453D-B010-DA432DE0709C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{180F55C9-783F-41D4-A73D-38CE653943AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{180F55C9-783F-41D4-A73D-38CE653943AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{180F55C9-783F-41D4-A73D-38CE653943AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C30DDA1A-99AE-453D-B010-DA432DE0709C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C30DDA1A-99AE-453D-B010-DA432DE0709C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C30DDA1A-99AE-453D-B010-DA432DE0709C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C30DDA1A-99AE-453D-B010-DA432DE0709C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -36,6 +42,7 @@ Global
 		{A51CD12E-049B-431E-9954-19E20C7554BA} = {406C9723-63E2-493F-A9F2-4ABFEC5419C7}
 		{5CE9E7B7-9EA2-440D-A856-1153099B1F70} = {1F4E911F-A68B-4800-A862-FD37904FA039}
 		{180F55C9-783F-41D4-A73D-38CE653943AD} = {5CE9E7B7-9EA2-440D-A856-1153099B1F70}
+		{C30DDA1A-99AE-453D-B010-DA432DE0709C} = {5CE9E7B7-9EA2-440D-A856-1153099B1F70}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {45134D12-1CC0-42EB-B42E-E600A6EE50CA}
