@@ -1,4 +1,4 @@
-﻿namespace Koala.Authentications.Jwt
+﻿namespace Koala.Authentications
 {
     public struct IdentityAddParameters
     {

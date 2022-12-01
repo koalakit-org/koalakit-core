@@ -1,5 +1,4 @@
-﻿namespace Koala.Authentications.Jwt
-{
+﻿namespace Koala.Authentications{
     public struct KoalaSignInResult
     {
         public KoalaSignInResult(string code)
@@ -12,7 +11,7 @@
         public KoalaSignInResult(string token, string refreshToken)
         {
             Succeeded = true;
-            Code= string.Empty;
+            Code = string.Empty;
             Token = token;
             RefreshToken = refreshToken;
         }

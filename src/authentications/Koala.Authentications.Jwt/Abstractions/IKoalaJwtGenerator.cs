@@ -1,8 +1,8 @@
 ﻿using System.Security.Claims;
 
-namespace Koala.Authentications.Jwt.Abstractions
+namespace Koala.Authentications.Jwt
 {
-    internal class IKoalaJwtGenerator
+    public interface IKoalaJwtGenerator
     {
         string GenerateAccessToken(params Claim[] claim);
         public string GenerateRefreshToken(string userId);
