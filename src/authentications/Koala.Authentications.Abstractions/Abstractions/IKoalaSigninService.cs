@@ -1,6 +1,6 @@
 ﻿using KoalaKit.Cosmetics;
 
-namespace Koala.Authentications.Jwt
+namespace Koala.Authentications
 {
     public interface IKoalaSigninService
     {
