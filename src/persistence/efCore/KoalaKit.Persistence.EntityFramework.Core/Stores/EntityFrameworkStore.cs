@@ -1,6 +1,4 @@
-﻿using System.Linq.Expressions;
-using EFCore.BulkExtensions;
-using KoalaKit.Persistence.Specifications;
+﻿using KoalaKit.Persistence.Specifications;
 using Microsoft.EntityFrameworkCore;
 
 namespace KoalaKit.Persistence.EFCore
@@ -48,17 +46,28 @@ namespace KoalaKit.Persistence.EFCore
         {
             await DoWork(async dbContext =>
             {
-                var query = dbContext.Set<TEntity>().AsQueryable().Where(e => e.Id == id);
-                await query.BatchDeleteAsync(cancellationToken);
+                var item = await dbContext.Set<TEntity>().AsQueryable().Where(e => e.Id == id).FirstOrDefaultAsync();
+                if(item != null)
+                {
+                    dbContext.Remove(item);
+                }
             }, cancellationToken);
         }
 
+        /// TODO: Refactor
         public async Task DeleteManyAsync(IEntitySpecification<TEntity> specification, CancellationToken cancellationToken = default)
         {
             await DoWork(async dbContext =>
             {
-                var query = MapSpecification(dbContext.Set<TEntity>().AsQueryable(), specification);
-                await query.BatchDeleteAsync(cancellationToken);
+                var items = await MapSpecification(dbContext.Set<TEntity>().AsQueryable(), specification).ToListAsync();
+                foreach (var item in items)
+                {
+                    if (item != null)
+                    {
+                        dbContext.Remove(item);
+                    }
+                }
+                // await query.BatchDeleteAsync(cancellationToken);
             }, cancellationToken);
         }
 
@@ -104,6 +113,23 @@ namespace KoalaKit.Persistence.EFCore
                 if (entity != null)
                     entity.UpdatedUtc = DateTime.UtcNow;
 
+            }, cancellationToken);
+        }
+
+        public async Task UpdateManyAsync(IEntitySpecification<TEntity> specification, Func<TEntity?, ValueTask> update, CancellationToken cancellationToken = default)
+        {
+            await DoWork(async dbContext =>
+            {
+                var query = MapIncludes(specification, dbContext.Set<TEntity>().AsQueryable());
+                var entities = await MapSpecification(query, specification).ToListAsync();
+                foreach ( var entity in entities)
+                {
+                    if (entity != null)
+                    {
+                        await update(entity);
+                        entity.UpdatedUtc = DateTime.UtcNow;
+                    }
+                }
             }, cancellationToken);
         }
 

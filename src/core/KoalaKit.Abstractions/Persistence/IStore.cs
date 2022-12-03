@@ -13,5 +13,6 @@ namespace KoalaKit.Persistence
         Task<TEntity?> FindAsync(IEntitySpecification<TEntity> specification, CancellationToken cancellationToken = default);
         Task<IEnumerable<TEntity>> ListAsync(IEntitySpecification<TEntity> specification, CancellationToken cancellationToken = default);
         Task UpdateAsync(IEntitySpecification<TEntity> specification, Func<TEntity?, ValueTask> update, CancellationToken cancellationToken = default);
+        Task UpdateManyAsync(IEntitySpecification<TEntity> specification, Func<TEntity?, ValueTask> update, CancellationToken cancellationToken = default);
     }
 }
