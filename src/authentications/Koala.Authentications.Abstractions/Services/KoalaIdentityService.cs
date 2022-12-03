@@ -64,10 +64,10 @@ namespace Koala.Authentications
 
         public async Task Remove(string userId)
         {
-            var tokens = await tokensStore.ListAsync(new UserIdentityTokensSpecification().ByUserId(userId));
+            var tokens = await tokensStore.ListAsync(new UserIdentityTokenSpecifications().ByUserId(userId));
             foreach (var token in tokens)
             {
-                await tokensStore.UpdateAsync(new UserIdentityTokensSpecification().ById(token.Id),
+                await tokensStore.UpdateAsync(new UserIdentityTokenSpecifications().ById(token.Id),
                     async t =>
                     {
                         if (t != null)

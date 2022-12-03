@@ -1,6 +1,5 @@
 ﻿using KoalaKit.Persistence.EFCore.DbFactoryServices;
 using KoalaKit.Tasks;
-using Microsoft.EntityFrameworkCore;
 
 namespace KoalaKit.Persistence.EFCore.Tasks
 {
@@ -13,7 +12,6 @@ namespace KoalaKit.Persistence.EFCore.Tasks
         public async Task ExecuteAsync(CancellationToken cancellationToken = default)
         {
             await using var dbContext = dbContextFactory.CreateDbContext();
-            await dbContext.Database.MigrateAsync(cancellationToken);
             await dbContext.DisposeAsync();
         }
     }

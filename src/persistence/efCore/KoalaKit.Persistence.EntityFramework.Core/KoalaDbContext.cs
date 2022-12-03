@@ -14,8 +14,8 @@ namespace KoalaKit.Persistence.EFCore
         
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            if (!string.IsNullOrWhiteSpace(Schema))
-                modelBuilder.HasDefaultSchema(Schema);
+            //if (!string.IsNullOrWhiteSpace(Schema))
+            //    modelBuilder.HasDefaultSchema(Schema);
             foreach (var dbEntityProvider in EntityProvidersCollection.List)
                 dbEntityProvider.OnModelCreating(modelBuilder);
             base.OnModelCreating(modelBuilder);

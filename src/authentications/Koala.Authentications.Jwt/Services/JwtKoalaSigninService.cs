@@ -54,7 +54,7 @@ namespace Koala.Authentications.Jwt
             {
                 return new KoalaSignInResult("invalid-parameters");
             }
-            return new BaseElkomResult<string>(token.UserId);
+            return new KoalaSignInResult(token.UserId);
         }
 
         public Task<KoalaSignInResult> ValidateSignIn(string token)
