@@ -4,10 +4,10 @@ namespace Koala.Authentications
 {
     public interface IKoalaSigninService
     {
-        KoalaSignInResult SignIn(params KeyValuePair<string, string>[] claims);
-        KoalaSignInResult SignIn(string userId);
-        bool ValidateSignIn(SignInParameters parameters, out string userId);
-        bool ValidateSignIn(string token);
-        bool ValidRefreshToken(string token);
+        Task<KoalaSignInResult> SignIn(params KeyValuePair<string, string>[] claims);
+        Task<KoalaSignInResult> SignIn(string userId);
+        Task<string> ValidateSignIn(SignInParameters parameters);
+        Task<string> ValidateSignIn(string token);
+        Task<string> ValidRefreshToken(string token);
     }
 }

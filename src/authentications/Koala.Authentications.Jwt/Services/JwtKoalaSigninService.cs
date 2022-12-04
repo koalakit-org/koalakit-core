@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Claims;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Security.Claims;
 using KoalaKit.Cosmetics;
 using KoalaKit.Persistence;
 
@@ -47,22 +42,22 @@ namespace Koala.Authentications.Jwt
             return await SignIn(claims.Select(a => new KeyValuePair<string, string>(a.Key, a.Value)).ToArray());
         }
 
-        public async Task<KoalaSignInResult> ValidateSignIn(SignInParameters parameters)
+        public async Task<string> ValidateSignIn(SignInParameters parameters)
         {
             var token = await tokensStore.FindAsync(new UserIdentityTokenSpecifications().BySignInParameters(parameters));
             if (token == null)
             {
-                return new KoalaSignInResult("invalid-parameters");
+                return string.Empty;
             }
-            return new KoalaSignInResult(token.UserId);
+            return token.UserId;
         }
 
-        public Task<KoalaSignInResult> ValidateSignIn(string token)
+        public Task<string> ValidateSignIn(string token)
         {
             throw new NotImplementedException();
         }
 
-        public KoalaSignInResult ValidRefreshToken(string token)
+        public async Task<string> ValidRefreshToken(string token)
         {
             throw new NotImplementedException();
         }
