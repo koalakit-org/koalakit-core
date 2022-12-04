@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.25.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\..\core\KoalaKit.Abstractions\KoalaKit.Abstractions.csproj" />
     <ProjectReference Include="..\..\cosmetics\KoalaKit.Cosmetics\KoalaKit.Cosmetics.csproj" />
     <ProjectReference Include="..\Koala.Authentications.Abstractions\Koala.Authentications.Abstractions.csproj" />
