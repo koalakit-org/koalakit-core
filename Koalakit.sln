@@ -43,8 +43,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Koala.Authentications.Jwt",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Koala.Authentications.Abstractions", "src\authentications\Koala.Authentications.Abstractions\Koala.Authentications.Abstractions.csproj", "{6FF69DE6-86C5-48BB-9A6B-D934829C8635}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Koala.Authentications.SqlStorage", "src\authentications\Koala.Authentications.Jwt\Koala.Authentications.SqlStorage\Koala.Authentications.SqlStorage.csproj", "{401EC05C-6CF4-45F2-BD1B-8647FDC394A4}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -91,10 +89,6 @@ Global
 		{6FF69DE6-86C5-48BB-9A6B-D934829C8635}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6FF69DE6-86C5-48BB-9A6B-D934829C8635}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6FF69DE6-86C5-48BB-9A6B-D934829C8635}.Release|Any CPU.Build.0 = Release|Any CPU
-		{401EC05C-6CF4-45F2-BD1B-8647FDC394A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{401EC05C-6CF4-45F2-BD1B-8647FDC394A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{401EC05C-6CF4-45F2-BD1B-8647FDC394A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{401EC05C-6CF4-45F2-BD1B-8647FDC394A4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -119,7 +113,6 @@ Global
 		{55FBE4F3-E403-48C2-95B3-9EE31F98FCBC} = {BB0F7B4D-3A40-4A62-A26C-4AAA98F7CAAC}
 		{1293CB76-A7C0-4753-9D62-48E10BE78422} = {DF71AB4B-C341-4CB6-85B6-8B464C93957F}
 		{6FF69DE6-86C5-48BB-9A6B-D934829C8635} = {DF71AB4B-C341-4CB6-85B6-8B464C93957F}
-		{401EC05C-6CF4-45F2-BD1B-8647FDC394A4} = {DF71AB4B-C341-4CB6-85B6-8B464C93957F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {45134D12-1CC0-42EB-B42E-E600A6EE50CA}

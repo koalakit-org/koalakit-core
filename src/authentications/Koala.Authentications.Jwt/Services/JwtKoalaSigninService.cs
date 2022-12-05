@@ -13,7 +13,6 @@ namespace Koala.Authentications.Jwt
         public JwtKoalaSigninService(
             IStore<UserIdentityToken> tokensStone,
             IStore<UserIdentityClaim> claimsStore,
-            ITokenizationService tokenizationService,
             IKoalaJwtGenerator jwtGenerator)
         {
             this.tokensStore = tokensStone;
@@ -21,7 +20,7 @@ namespace Koala.Authentications.Jwt
             this.jwtGenerator = jwtGenerator;
         }
 
-        public async Task<KoalaSignInResult> GetToken(string userId)
+        public async Task<KoalaSignInResult> SignIn(string userId)
         {
             var claims = await claimsStore.ListAsync(new UserIdentityClaimSpecifications().ByUserId(userId));
             if (claims == null || !claims.Any())
@@ -33,7 +32,7 @@ namespace Koala.Authentications.Jwt
             return new KoalaSignInResult(accessToken, refreshToken);
         }
 
-        public async Task<KoalaSignInResult> SignIn(SignInParameters parameters)
+        public async Task<KoalaSignInResult> ValidateSignIn(SignInParameters parameters)
         {
             var identityToken = await tokensStore.FindAsync(new UserIdentityTokenSpecifications().BySignInParameters(parameters));
             if (identityToken == null)
@@ -41,16 +40,16 @@ namespace Koala.Authentications.Jwt
                 return new KoalaSignInResult("invalid-parameters");
             }
 
-            return await GetToken(identityToken.UserId);
+            return await SignIn(identityToken.UserId);
         }
 
-        public async Task<KoalaSignInResult> SignIn(string refreshToken)
+        public async Task<KoalaSignInResult> ValidateSignIn(string refreshToken)
         {
             if (!jwtGenerator.ValidateRefreshToken(refreshToken, out var userId))
             {
                 return new KoalaSignInResult("not-allowed");
             }
-            return await GetToken(userId);
+            return await SignIn(userId);
         }
     }
 }

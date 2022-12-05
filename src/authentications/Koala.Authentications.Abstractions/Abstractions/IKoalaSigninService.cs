@@ -4,8 +4,8 @@ namespace Koala.Authentications
 {
     public interface IKoalaSigninService
     {
-        Task<KoalaSignInResult> GetToken(string userId);
-        Task<KoalaSignInResult> SignIn(SignInParameters parameters);
-        Task<KoalaSignInResult> SignIn(string refreshToken);
+        Task<KoalaSignInResult> SignIn(string userId);
+        Task<KoalaSignInResult> ValidateSignIn(SignInParameters parameters);
+        Task<KoalaSignInResult> ValidateSignIn(string refreshToken);
     }
 }
