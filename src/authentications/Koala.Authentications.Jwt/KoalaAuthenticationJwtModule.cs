@@ -18,10 +18,10 @@ namespace Koala.Authentications.Jwt
             koala.Services.Configure<IKoalaIdentityAuthenticationSettings>(koala.Configuration.GetSection(nameof(IKoalaIdentityAuthenticationSettings)));
             koala.Services.AddSingleton(sp => sp.GetRequiredService<IOptions<IKoalaIdentityAuthenticationSettings>>().Value);
 
-            koala.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             koala.Services.AddScoped<IKoalaIdentityService, KoalaIdentityService>();
+            koala.Services.AddScoped<IKoalaSigninService, JwtKoalaSigninService>();
+            koala.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             koala.Services.AddSingleton<IKoalaJwtGenerator, KoalaJwtGenerator>();
-            koala.Services.AddSingleton<IKoalaSigninService, JwtKoalaSigninService>();
 
             AddJwtAuthentication(koala);
 
