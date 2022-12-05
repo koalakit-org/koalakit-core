@@ -1,4 +1,5 @@
-﻿namespace Koala.Authentications{
+﻿namespace Koala.Authentications
+{
     public struct KoalaSignInResult
     {
         public KoalaSignInResult(string code)
