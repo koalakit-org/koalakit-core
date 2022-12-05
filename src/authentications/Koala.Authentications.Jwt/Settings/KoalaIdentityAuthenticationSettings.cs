@@ -1,6 +1,6 @@
 ﻿namespace Koala.Authentications.Jwt
 {
-    internal class KoalaIdentityAuthenticationSettings : IKoalaIdentityAuthenticationSettings
+    public class KoalaIdentityAuthenticationSettings : IKoalaIdentityAuthenticationSettings
     {
         public string Secret { get; set; } = string.Empty;
         public string Issuer { get; set; } = string.Empty;
