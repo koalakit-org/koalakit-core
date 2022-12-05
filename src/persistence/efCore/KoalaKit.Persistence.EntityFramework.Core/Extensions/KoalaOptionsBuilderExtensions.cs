@@ -1,8 +1,11 @@
-﻿using KoalaKit.Options;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Net.NetworkInformation;
+using KoalaKit.Options;
 using KoalaKit.Persistence.EFCore.DbFactoryServices;
 using KoalaKit.Persistence.EFCore.Stores;
 using KoalaKit.Persistence.EFCore.Tasks;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace KoalaKit.Persistence.EFCore.Extensions
@@ -65,5 +68,39 @@ namespace KoalaKit.Persistence.EFCore.Extensions
             koala.Services.AddSingleton<IKoalaContextFactory, KoalaContextFactory<TKoalaContext>>();
             return koala;
         }
+
+        public static string GetConnectionString(this KoalaOptionsBuilder koala, string provider)
+        {
+            var section = koala.Configuration.GetSection($"Koala:DefaultPersistence");
+            var connectionStringName = section.GetValue<string>("ConnectionStringIdentifier");
+            var connectionString = section.GetValue<string>("ConnectionString");
+            if (string.IsNullOrWhiteSpace(connectionString))
+            {
+                if (string.IsNullOrWhiteSpace(connectionStringName))
+                    connectionStringName = provider;
+
+                connectionString = koala.Configuration.GetConnectionString(connectionStringName);
+            }
+
+            if (string.IsNullOrWhiteSpace(connectionString))
+                connectionString = GetDefaultConnectionString(provider);
+
+            return connectionString;
+        }
+
+        public static string GetMigrationAssemblyName(this KoalaOptionsBuilder koala)
+        {
+            var section = koala.Configuration.GetSection($"Koala:DefaultPersistence");
+            var migrationsAssemblyName = section.GetValue<string>("MigrationsAssembly");
+
+            if (string.IsNullOrWhiteSpace(migrationsAssemblyName))
+                migrationsAssemblyName = GetDefaultMigrationAssemblyName();
+
+
+            return migrationsAssemblyName;
+        }
+
+        private static string GetDefaultConnectionString(string provider) => throw new Exception($"No connection string specified for the {provider} provider");
+        private static string GetDefaultMigrationAssemblyName() => throw new Exception($"No migration assembly name specified");
     }
 }

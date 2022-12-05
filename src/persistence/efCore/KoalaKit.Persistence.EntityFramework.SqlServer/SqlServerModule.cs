@@ -1,12 +1,20 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using KoalaKit.Modules;
+using KoalaKit.Options;
+using KoalaKit.Persistence.EFCore.Extensions;
+using Microsoft.EntityFrameworkCore;
 
 namespace KoalaKit.Persistence.EFCore.SqlServer
 {
-    public class SqlServerModule : EfCoreModuleBase
+    public class SqlServerModule : KoalaModuleBase
     {
-        protected override string ProviderName => "SqlServer";
+        const string ProviderName = "SqlServer";
 
-        protected override void Configure(DbContextOptionsBuilder builder, string connectionString, string migrationsAssemblyName)
-            => builder.ConfigureSqlServer(connectionString, migrationsAssemblyName);
+        public override void ConfigureKoala(KoalaOptionsBuilder koala)
+        {
+            koala.UseEfPersistence(options =>
+            {
+                options.ConfigureSqlServer(koala.GetConnectionString(ProviderName), koala.GetMigrationAssemblyName());
+            });
+        }
     }
 }
