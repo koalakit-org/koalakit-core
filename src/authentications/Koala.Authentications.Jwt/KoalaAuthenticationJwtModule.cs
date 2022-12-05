@@ -1,6 +1,7 @@
 ﻿using System.Text;
 using KoalaKit.Modules;
 using KoalaKit.Options;
+using KoalaKit.Persistence.EFCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
@@ -23,6 +24,8 @@ namespace Koala.Authentications.Jwt
             koala.Services.AddSingleton<IKoalaSigninService, JwtKoalaSigninService>();
 
             AddJwtAuthentication(koala);
+
+            EntityProvidersCollection.AddDbEntityProvider(typeof(AuthenticationEntityProvider).Assembly);
             base.ConfigureKoala(koala);
         }
 

@@ -13,6 +13,8 @@
   <ItemGroup>
     <ProjectReference Include="..\..\core\KoalaKit.Abstractions\KoalaKit.Abstractions.csproj" />
     <ProjectReference Include="..\..\cosmetics\KoalaKit.Cosmetics\KoalaKit.Cosmetics.csproj" />
+    <ProjectReference Include="..\..\persistence\efCore\KoalaKit.Persistence.EntityFramework.Core\KoalaKit.Persistence.EntityFramework.Core.csproj" />
+    <ProjectReference Include="..\..\persistence\efCore\KoalaKit.Persistence.EntityFramework.SqlServer\KoalaKit.Persistence.EntityFramework.SqlServer.csproj" />
   </ItemGroup>
 
 </Project>
