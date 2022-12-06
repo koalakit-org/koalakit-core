@@ -1,14 +1,14 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
 
-    <RootNamespace>koala.authentication.jwt</RootNamespace>
+    <RootNamespace>Koala.Authentications.Jwt</RootNamespace>
     <PackageTags>Koalakit, Framework, Modularity, .NET7</PackageTags>
-    <PackageId>Koalakit.authentication.jwt</PackageId>
-    <Version>7.0.3-alpha</Version>
+    <PackageId>Koala.Authentications.Jwt</PackageId>
+    <Version>7.0.4-alpha</Version>
     <Authors>Koalakit.org</Authors>
     <Description>
       Koala kit is a solution template that built using the .NET stack. currently .NET7
