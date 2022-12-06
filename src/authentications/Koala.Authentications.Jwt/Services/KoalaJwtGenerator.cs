@@ -2,6 +2,7 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 
 namespace Koala.Authentications.Jwt
@@ -11,9 +12,9 @@ namespace Koala.Authentications.Jwt
         private readonly KoalaIdentityAuthenticationSettings options;
         private readonly ConcurrentDictionary<string, string> tokens = new();
 
-        public KoalaJwtGenerator(KoalaIdentityAuthenticationSettings options)
+        public KoalaJwtGenerator(IOptions<KoalaIdentityAuthenticationSettings> options)
         {
-            this.options = options;
+            this.options = options.Value;
         }
         public string GenerateAccessToken(params Claim[] claims)
         {

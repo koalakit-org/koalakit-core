@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 
 namespace Koala.Authentications.Jwt
@@ -15,8 +14,7 @@ namespace Koala.Authentications.Jwt
     {
         public override void ConfigureKoala(KoalaOptionsBuilder koala)
         {
-            koala.Services.Configure<KoalaIdentityAuthenticationSettings>(koala.Configuration.GetSection(nameof(KoalaIdentityAuthenticationSettings)));
-            koala.Services.AddSingleton(sp => sp.GetRequiredService<IOptions<KoalaIdentityAuthenticationSettings>>().Value);
+            koala.Services.Configure<KoalaIdentityAuthenticationSettings>(options => koala.Configuration.GetSection(nameof(KoalaIdentityAuthenticationSettings)).Bind(options));
 
             koala.Services.AddScoped<IKoalaIdentityService, KoalaIdentityService>();
             koala.Services.AddScoped<IKoalaSigninService, JwtKoalaSigninService>();
