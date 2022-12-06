@@ -4,6 +4,16 @@
     <TargetFramework>net7.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+
+    <RootNamespace>koala.authentication.jwt</RootNamespace>
+    <PackageTags>Koalakit, Framework, Modularity, .NET7</PackageTags>
+    <PackageId>Koalakit.authentication.jwt</PackageId>
+    <Version>7.0.3-alpha</Version>
+    <Authors>Koalakit.org</Authors>
+    <Description>
+      Koala kit is a solution template that built using the .NET stack. currently .NET7
+      The koalaKit.Abstractions contains all the modules abstraction services. and used to  role the development structure.
+    </Description>
   </PropertyGroup>
 
   <ItemGroup>
