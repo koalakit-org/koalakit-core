@@ -8,10 +8,10 @@ namespace Koala.Authentications.Jwt
 {
     public class KoalaJwtGenerator : IKoalaJwtGenerator
     {
-        private readonly IKoalaIdentityAuthenticationSettings options;
+        private readonly KoalaIdentityAuthenticationSettings options;
         private readonly ConcurrentDictionary<string, string> tokens = new();
 
-        public KoalaJwtGenerator(IKoalaIdentityAuthenticationSettings options)
+        public KoalaJwtGenerator(KoalaIdentityAuthenticationSettings options)
         {
             this.options = options;
         }
