@@ -15,8 +15,8 @@ namespace Koala.Authentications.Jwt
     {
         public override void ConfigureKoala(KoalaOptionsBuilder koala)
         {
-            koala.Services.Configure<IKoalaIdentityAuthenticationSettings>(koala.Configuration.GetSection(nameof(IKoalaIdentityAuthenticationSettings)));
-            koala.Services.AddSingleton(sp => sp.GetRequiredService<IOptions<IKoalaIdentityAuthenticationSettings>>().Value);
+            koala.Services.Configure<KoalaIdentityAuthenticationSettings>(koala.Configuration.GetSection(nameof(KoalaIdentityAuthenticationSettings)));
+            koala.Services.AddSingleton(sp => sp.GetRequiredService<IOptions<KoalaIdentityAuthenticationSettings>>().Value);
 
             koala.Services.AddScoped<IKoalaIdentityService, KoalaIdentityService>();
             koala.Services.AddScoped<IKoalaSigninService, JwtKoalaSigninService>();
@@ -31,7 +31,7 @@ namespace Koala.Authentications.Jwt
 
         private void AddJwtAuthentication(KoalaOptionsBuilder koala)
         {
-            var settings = koala.Configuration.GetSection(nameof(IKoalaIdentityAuthenticationSettings)).Get<IKoalaIdentityAuthenticationSettings>();
+            var settings = koala.Configuration.GetSection(nameof(KoalaIdentityAuthenticationSettings)).Get<KoalaIdentityAuthenticationSettings>();
 
             if (settings == null || settings == default) return;
 
