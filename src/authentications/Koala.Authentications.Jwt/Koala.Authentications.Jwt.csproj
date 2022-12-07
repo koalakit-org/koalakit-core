@@ -8,7 +8,7 @@
     <RootNamespace>Koala.Authentications.Jwt</RootNamespace>
     <PackageTags>Koalakit, Framework, Modularity, .NET7</PackageTags>
     <PackageId>Koala.Authentications.Jwt</PackageId>
-    <Version>7.0.10-alpha</Version>
+    <Version>7.0.11-alpha</Version>
     <Authors>Koalakit.org</Authors>
     <Description>
       Koala kit is a solution template that built using the .NET stack. currently .NET7
