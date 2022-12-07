@@ -1,4 +1,4 @@
-﻿namespace KoalaKit.Cosmetics.Models
+﻿namespace KoalaKit.Cosmetics
 {
     public class KoalaRegistrationValidationParameters
     {

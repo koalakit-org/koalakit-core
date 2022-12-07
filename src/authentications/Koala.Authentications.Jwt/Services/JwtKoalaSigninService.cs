@@ -1,6 +1,5 @@
 ﻿using System.Security.Claims;
 using KoalaKit.Cosmetics;
-using KoalaKit.Cosmetics.Models;
 using KoalaKit.Persistence;
 
 namespace Koala.Authentications.Jwt
