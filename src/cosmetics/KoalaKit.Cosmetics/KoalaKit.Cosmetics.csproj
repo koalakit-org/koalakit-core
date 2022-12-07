@@ -18,6 +18,11 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.DataProtection.Abstractions" Version="7.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.DataProtection.Extensions" Version="7.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\core\KoalaKit.Abstractions\KoalaKit.Abstractions.csproj" />
   </ItemGroup>
 
 </Project>

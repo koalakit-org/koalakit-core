@@ -6,9 +6,9 @@ namespace KoalaKit.Cosmetics
     public class TokenizationService : ITokenizationService
     {
         private readonly IDataProtector dataProtector;
-        public TokenizationService(IDataProtector dataProtector)
+        public TokenizationService(IDataProtectionProvider dataProtector)
         {
-            this.dataProtector = dataProtector;
+            this.dataProtector = dataProtector.CreateProtector("Tokenization");
         }
         public TData? GetData<TData>(string token)
         {
