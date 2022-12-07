@@ -1,10 +1,15 @@
 ﻿using System.Text.Json;
+using Microsoft.AspNetCore.DataProtection;
 
 namespace KoalaKit.Cosmetics
 {
-    // TODO: Implement tokenization
     public class TokenizationService : ITokenizationService
     {
+        private readonly IDataProtector dataProtector;
+        public TokenizationService(IDataProtector dataProtector)
+        {
+            this.dataProtector = dataProtector;
+        }
         public TData? GetData<TData>(string token)
         {
             try
@@ -13,7 +18,9 @@ namespace KoalaKit.Cosmetics
                 {
                     return default(TData);
                 }
-                return JsonSerializer.Deserialize<TData>(token, new JsonSerializerOptions
+
+                var plainToken = dataProtector.Unprotect(token);
+                return JsonSerializer.Deserialize<TData>(plainToken, new JsonSerializerOptions
                 {
                     IncludeFields = true,
                 });
@@ -26,10 +33,12 @@ namespace KoalaKit.Cosmetics
 
         public string Tokenize<TData>(TData data)
         {
-            var token = JsonSerializer.Serialize(data, new JsonSerializerOptions
+            var plainToken = JsonSerializer.Serialize(data, new JsonSerializerOptions
             {
                 IncludeFields = true,
             });
+
+            var token = dataProtector.Protect(plainToken);
             return token;
         }
     }

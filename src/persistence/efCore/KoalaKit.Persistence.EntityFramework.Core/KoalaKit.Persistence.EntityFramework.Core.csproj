@@ -8,7 +8,7 @@
     <RootNamespace>KoalaKit.Persistence.EFCore</RootNamespace>
     <PackageTags>Koalakit, Framework, Modularity, .NET7, EfCore, Storage, Database, Store, RelationalDB</PackageTags>
     <PackageId>KoalaKit.Persistence.EFCore</PackageId>
-    <Version>7.0.3-alpha</Version>
+    <Version>7.0.10-alpha</Version>
     <Authors>Koalakit.org</Authors>
     <Description>
       Koala kit is a solution template that built using the .NET stack. currently .NET7

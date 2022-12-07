@@ -8,12 +8,16 @@
     <RootNamespace>KoalaKit.Cosmetics</RootNamespace>
     <PackageTags>Koalakit, Framework, Modularity, .NET7</PackageTags>
     <PackageId>KoalaKit.Cosmetics</PackageId>
-    <Version>7.0.4-alpha</Version>
+    <Version>7.0.10-alpha</Version>
     <Authors>Koalakit.org</Authors>
     <Description>
       Koala kit is a solution template that built using the .NET stack. currently .NET7
       The koalaKit.Abstractions contains all the modules abstraction services. and used to  role the development structure.
     </Description>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.DataProtection.Abstractions" Version="7.0.0" />
+  </ItemGroup>
 
 </Project>
