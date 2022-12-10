@@ -1,5 +1,6 @@
 ﻿namespace KoalaKit.Cosmetics
 {
+    [Serializable]
     public class PaginationParameters
     {
         public int PageNumber { get; set; } = 1;

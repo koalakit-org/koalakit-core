@@ -2,6 +2,7 @@
 
 namespace KoalaKit.Cosmetics
 {
+    [Serializable]
     public struct SignInParameters : IEquatable<SignInParameters>
     {
         private string username;

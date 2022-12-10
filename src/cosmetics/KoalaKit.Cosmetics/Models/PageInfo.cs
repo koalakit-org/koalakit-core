@@ -1,5 +1,6 @@
 ﻿namespace KoalaKit.Cosmetics
 {
+    [Serializable]
     public struct PageInfo
     {
         public PageInfo(int totalCount, PaginationParameters pagination)

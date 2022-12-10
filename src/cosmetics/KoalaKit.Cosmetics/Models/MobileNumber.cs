@@ -3,6 +3,7 @@ using System.Text.RegularExpressions;
 
 namespace KoalaKit.Cosmetics
 {
+    [Serializable]
     public struct MobileNumber : IEquatable<MobileNumber>
     {
         private string countryCode;

@@ -1,5 +1,6 @@
 ﻿namespace KoalaKit.Cosmetics
 {
+    [Obsolete($"Obsolete implementation, use KoalaEnvelope in replace", true)]
     public class KoalaElkomResult
     {
         private List<string> errors;
