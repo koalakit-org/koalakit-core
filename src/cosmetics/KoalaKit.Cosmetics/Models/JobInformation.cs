@@ -1,6 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
-
-namespace KoalaKit.Cosmetics
+﻿namespace KoalaKit.Cosmetics
 {
     [Serializable]
     public struct JobInformation : IEquatable<JobInformation>
@@ -15,7 +13,7 @@ namespace KoalaKit.Cosmetics
         public string Title { get; set; }
 
         public override string ToString() => $"{Number}:{Title}";
-        public int GetHashCode([DisallowNull] JobInformation obj)
+        public int GetHashCode(JobInformation obj)
         {
             return base.GetHashCode();
         }
