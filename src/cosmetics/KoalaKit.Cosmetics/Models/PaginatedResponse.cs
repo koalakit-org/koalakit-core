@@ -1,7 +1,7 @@
 ﻿namespace KoalaKit.Cosmetics
 {
     [Serializable]
-    public class PaginatedResponse<T> : KoalaElkomResult<IEnumerable<T>>
+    public class PaginatedResponse<T> : KoalaResult<IEnumerable<T>>
     {
         public PaginatedResponse(IEnumerable<T> items, int count, PaginationParameters pagination)
         {

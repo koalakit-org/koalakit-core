@@ -8,9 +8,9 @@ public static class KoalaEnvelopeHelpers
         return envelope;
     }
 
-    public static KoalaEnvelope<EmptyData> BuildEnvelopeResult(params KoalaError[] errors)
+    public static KoalaEnvelope BuildEnvelopeResult(params KoalaError[] errors)
     {
-        var envelope = new KoalaEnvelope<EmptyData>(errors);
+        var envelope = new KoalaEnvelope(errors);
         return envelope;
     }
 }

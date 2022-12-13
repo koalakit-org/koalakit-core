@@ -1,18 +1,18 @@
 ﻿namespace KoalaKit.Cosmetics
 {
     [Obsolete($"Obsolete implementation, use KoalaEnvelope in replace", true)]
-    public class KoalaElkomResult
+    public class KoalaResult
     {
         private List<string> errors;
         private List<string> messages;
 
 
-        public KoalaElkomResult()
+        public KoalaResult()
         {
             errors = new List<string>();
             messages = new List<string>();
         }
-        public KoalaElkomResult(params string[] codes) : this()
+        public KoalaResult(params string[] codes) : this()
         {
             foreach (var code in codes)
             {
@@ -35,16 +35,16 @@
     }
 
 
-    public class KoalaElkomResult<T> : KoalaElkomResult
+    public class KoalaResult<T> : KoalaResult
     {
-        public KoalaElkomResult(params string[] codes) : base(codes)
+        public KoalaResult(params string[] codes) : base(codes)
         { }
-        public KoalaElkomResult(T? data) : base()
+        public KoalaResult(T? data) : base()
         {
             Data = data;
         }
 
-        public KoalaElkomResult(T? data, params string[] codes)
+        public KoalaResult(T? data, params string[] codes)
             : base(codes)
         {
             Data = data;
