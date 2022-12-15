@@ -66,6 +66,11 @@ namespace KoalaKit.Cosmetics
         {
             return string.IsNullOrEmpty(number);
         }
+        public bool IsValid()
+        {
+            return number.Length == 9 && Regex.Match(number, "^[0-9]*$").Success;
+        }
+
 
         public bool IsValidOrEmpty()
         {
