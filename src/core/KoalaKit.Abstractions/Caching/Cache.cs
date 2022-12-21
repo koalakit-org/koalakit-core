@@ -1,5 +1,7 @@
 ﻿namespace KoalaKit.Caching
 {
+
+    //// is correct to implement list cach items
     public class Cache : ICache
     {
         private readonly ICacheFactory cacheFactory;
