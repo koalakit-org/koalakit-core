@@ -1,14 +1,15 @@
-﻿using System.Text.Json;
-using Microsoft.AspNetCore.DataProtection;
+﻿using Microsoft.AspNetCore.DataProtection;
+using System.Text.Json;
 
 namespace KoalaKit.Cosmetics
 {
     public class TokenizationService : ITokenizationService
     {
+        private const string purpose = "ProtectData";
         private readonly IDataProtector dataProtector;
         public TokenizationService(IDataProtectionProvider dataProtector)
         {
-            this.dataProtector = dataProtector.CreateProtector("Tokenization");
+            this.dataProtector = dataProtector.CreateProtector(purpose: purpose);
         }
         public TData? GetData<TData>(string token)
         {
@@ -16,7 +17,7 @@ namespace KoalaKit.Cosmetics
             {
                 if (string.IsNullOrWhiteSpace(token))
                 {
-                    return default(TData);
+                    return default;
                 }
 
                 var plainToken = dataProtector.Unprotect(token);
@@ -27,7 +28,7 @@ namespace KoalaKit.Cosmetics
             }
             catch (Exception)
             {
-                return default(TData);
+                return default;
             }
         }
 

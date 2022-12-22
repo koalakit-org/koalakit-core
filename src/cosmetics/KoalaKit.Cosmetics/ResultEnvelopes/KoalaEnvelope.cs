@@ -1,5 +1,4 @@
-﻿
-namespace KoalaKit.Cosmetics
+﻿namespace KoalaKit.Cosmetics
 {
     [Serializable]
     public class KoalaEnvelope
@@ -32,9 +31,9 @@ namespace KoalaKit.Cosmetics
             Data = data;
         }
 
-        public KoalaEnvelope(params KoalaError[] codes) : base(codes) { }
+        public KoalaEnvelope(params KoalaError[] errors) : base(errors) { }
 
-        public KoalaEnvelope(T data, params KoalaError[] errors) : base(errors)
+        public KoalaEnvelope(T data, params KoalaError[] errors) : this(errors)
         {
             Data = data;
         }

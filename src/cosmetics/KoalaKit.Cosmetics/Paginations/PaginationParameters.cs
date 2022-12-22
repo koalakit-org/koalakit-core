@@ -1,4 +1,4 @@
-﻿namespace KoalaKit.Cosmetics
+﻿namespace KoalaKit.Cosmetics.Paginations
 {
     [Serializable]
     public class PaginationParameters

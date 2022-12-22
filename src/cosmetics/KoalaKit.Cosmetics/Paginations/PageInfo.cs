@@ -1,4 +1,6 @@
-﻿namespace KoalaKit.Cosmetics
+﻿using KoalaKit.Cosmetics.Paginations;
+
+namespace KoalaKit.Cosmetics
 {
     [Serializable]
     public struct PageInfo
@@ -8,7 +10,7 @@
             TotalCount = totalCount;
             PageNumber = pagination.PageNumber;
             PageSize = pagination.PageSize;
-            TotalPages = (int)Math.Ceiling((double)totalCount/pagination.PageSize);
+            TotalPages = (int)Math.Ceiling((double)totalCount / pagination.PageSize);
         }
 
         public int TotalCount { get; set; }

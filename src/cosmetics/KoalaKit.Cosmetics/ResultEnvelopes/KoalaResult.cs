@@ -35,6 +35,7 @@
     }
 
 
+    [Obsolete($"Obsolete implementation, use KoalaEnvelope in replace", true)]
     public class KoalaResult<T> : KoalaResult
     {
         public KoalaResult(params string[] codes) : base(codes)
