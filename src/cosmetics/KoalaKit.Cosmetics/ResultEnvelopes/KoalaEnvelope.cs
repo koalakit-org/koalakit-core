@@ -1,43 +1,52 @@
 ﻿namespace KoalaKit.Cosmetics
 {
     [Serializable]
-    public class KoalaEnvelope
+    public readonly struct KoalaEnvelope
     {
-        protected List<KoalaError> errors;
-
         public KoalaEnvelope()
         {
-            errors = new List<KoalaError>();
+            Errors = new List<KoalaError>();
         }
-        public KoalaEnvelope(params KoalaError[] codes) : this()
+        public KoalaEnvelope(params KoalaError[] errors) : this()
         {
-            foreach (var code in codes)
+            foreach (var code in errors)
             {
-                errors.Add(code);
+                Errors.Add(code);
             }
         }
 
-        public IEnumerable<KoalaError> Errors => errors;
+        public ICollection<KoalaError> Errors {get ; }
         public bool Succeeded => !Errors.Any();
     }
 
     [Serializable]
-    public class KoalaEnvelope<T> : KoalaEnvelope
+    public readonly struct KoalaEnvelope<T>
     {
-        public KoalaEnvelope() : base() { }
+        public KoalaEnvelope()
+        {
+            Errors = new List<KoalaError>();
+        }
+
+        public KoalaEnvelope(params KoalaError[] errors) : this()
+        {
+            foreach (var error in errors)
+            {
+                Errors.Add(error);
+            }
+        }
 
         public KoalaEnvelope(T data) : this()
         {
             Data = data;
         }
 
-        public KoalaEnvelope(params KoalaError[] errors) : base(errors) { }
-
         public KoalaEnvelope(T data, params KoalaError[] errors) : this(errors)
         {
             Data = data;
         }
 
-        public T? Data { get; set; }
+        public ICollection<KoalaError> Errors { get; }
+        public bool Succeeded => !Errors.Any();
+        public T? Data { get; }
     }
 }

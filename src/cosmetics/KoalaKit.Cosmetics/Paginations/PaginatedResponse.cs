@@ -4,13 +4,22 @@ using KoalaKit.Cosmetics.Paginations;
 namespace KoalaKit.Cosmetics
 {
     [Serializable]
-    public class PaginatedResponse<T> : KoalaEnvelope<IEnumerable<T>>
+    public readonly struct PaginatedResponse<T>
     {
-        public PaginatedResponse(IEnumerable<T> items, int count, PaginationParameters pagination)
+        public PaginatedResponse(int count, PaginationParameters pagination, ICollection<T>? items)
         {
             PageInfo = new PageInfo(count, pagination);
-            Data = items;
+            Items = items ?? new List<T>();
         }
-        public PageInfo PageInfo { get; set; }
+
+
+        public PaginatedResponse(int count, PaginationParameters pagination, params T[] items)
+        {
+            PageInfo = new PageInfo(count, pagination);
+            Items = items;
+        }
+
+        public ICollection<T> Items { get; }
+        public PageInfo PageInfo { get; }
     }
 }
