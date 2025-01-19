@@ -1,18 +1,9 @@
-# KoalaKit-Core
- A framework related to .NET
- contains a collection of tools to support modern architectures. and designing large-scale systems.
+# Kit-Core
 
-# In-progress
- - abstraction modularity infrastructure (module based registraction and using)
- - Event-sourcing 
- - messaging (message queuing)
-     - RabbitMQ support
- - messaging (Publish-Subscribe)
-     - Redis
-     - Apache Kafka 
- - persistence (Efcore)
-     - SQLServer
-     - MySQL
-     - PostgreSQL
-     - Oracle
-     - Sqlite
+**🐨Kit-Core** is a 🧩 modular and 🤏 simplified 🧰 toolkit designed for .NET 👨‍💻 developers. It offers a streamlined 📦 collection of 🛠️ tools to support 📐 modern 🏗️ architectural patterns and simplify the development of large-scale 🏢 systems.
+
+## ⏳ Coming Soon
+
+🎉 Exciting updates are on the 🌅 horizon! We are 🛠️ working hard to deliver an innovative 💡 and modular 🧩 toolkit tailored to enhance your .NET development 🖥️ experience.
+
+📢 Stay tuned for more 📄 details!
