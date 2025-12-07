@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using System.Text.Json.Serialization;
 
-namespace Kamel.Primitives.Results;
+namespace Koalakit.Primitives.Results;
 
 public class AppResult
 {

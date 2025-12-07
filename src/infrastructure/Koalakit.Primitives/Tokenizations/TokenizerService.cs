@@ -1,7 +1,7 @@
 ﻿using System.Security.Cryptography;
 using System.Text;
 
-namespace Kamel.Primitives.Tokenizations;
+namespace Koalakit.Primitives.Tokenizations;
 
 public static class TokenizerService
 {

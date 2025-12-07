@@ -2,9 +2,9 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Text.Json.Serialization.Metadata;
-using Kamel.Primitives.Extensions;
+using Koalakit.Primitives.Extensions;
 
-namespace Kamel.Primitives.Serializations;
+namespace Koalakit.Primitives.Serializations;
 
 public static class AppSerializer
 {

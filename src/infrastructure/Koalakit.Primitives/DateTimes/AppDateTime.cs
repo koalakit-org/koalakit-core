@@ -1,4 +1,4 @@
-﻿namespace Kamel.Primitives.DateTimes;
+﻿namespace Koalakit.Primitives.DateTimes;
 
 public readonly struct AppDateTime
 {

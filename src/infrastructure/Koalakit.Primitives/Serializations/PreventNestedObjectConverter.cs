@@ -1,7 +1,7 @@
 ﻿using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace Kamel.Primitives.Serializations;
+namespace Koalakit.Primitives.Serializations;
 
 public sealed class PreventNestedObjectConverter : JsonConverter<object>
 {

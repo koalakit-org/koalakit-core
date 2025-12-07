@@ -1,4 +1,4 @@
-﻿namespace Kamel.Primitives.Paginations;
+﻿namespace Koalakit.Primitives.Paginations;
 
 public record PaginationParameters
 {

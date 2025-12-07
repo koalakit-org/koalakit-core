@@ -1,4 +1,4 @@
-﻿namespace Kamel.Primitives.PhoneNumbers;
+﻿namespace Koalakit.Primitives.PhoneNumbers;
 
 public sealed record PhoneNumberRecord
 {

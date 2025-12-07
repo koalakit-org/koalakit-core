@@ -1,8 +1,8 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using Kamel.Primitives.DateTimes;
+using Koalakit.Primitives.DateTimes;
 
-namespace Kamel.Primitives.Serializations;
+namespace Koalakit.Primitives.Serializations;
 
 public class LocalDateTimeConverter : JsonConverter<DateTime>
 {
