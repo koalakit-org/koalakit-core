@@ -1,6 +1,6 @@
-using Kamel.Primitives.DateTimes;
+using Koalakit.Primitives.DateTimes;
 
-namespace Kamel.Primitives.Domain;
+namespace Koalakit.Primitives.Domain;
 
 public abstract class AuditableAggregate : AggregateRoot, IDeletable
 {

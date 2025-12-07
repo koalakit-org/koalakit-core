@@ -1,4 +1,4 @@
-namespace Kamel.Primitives.Domain;
+namespace Koalakit.Primitives.Domain;
 
 public interface IDeletable
 {

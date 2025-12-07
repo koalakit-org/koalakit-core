@@ -1,4 +1,4 @@
-﻿namespace Kamel.Primitives.Results;
+﻿namespace Koalakit.Primitives.Results;
 
 public enum AppErrorCode
 {

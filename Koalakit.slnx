@@ -1,1 +1,7 @@
-<Solution />
+<Solution>
+  <Folder Name="/src/" />
+  <Folder Name="/src/infrastructure/">
+    <Project Path="src/infrastructure/Koalakit.Primitives.PhoneNumbers/Koalakit.Primitives.PhoneNumbers.csproj" Id="91ef1b5d-cfd2-4d27-acbb-49038578eb11" />
+    <Project Path="src/infrastructure/Koalakit.Primitives/Koalakit.Primitives.csproj" Id="1c3370a3-a513-4fa6-bf08-6dbfb651dfb4" />
+  </Folder>
+</Solution>

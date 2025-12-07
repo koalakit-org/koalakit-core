@@ -1,4 +1,4 @@
-﻿namespace Kamel.Primitives;
+﻿namespace Koalakit.Primitives;
 
 public sealed record AccessToken(
     string Token,

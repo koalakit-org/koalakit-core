@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 
-namespace Kamel.Primitives.Extensions;
+namespace Koalakit.Primitives.Extensions;
 
 public static class TypeExtensions
 {
