@@ -1,13 +1,42 @@
-﻿using System.Security.Cryptography;
+using System.Security.Cryptography;
 using System.Text;
 
-namespace Koalakit.Primitives.Tokenizations;
+namespace Koalakit.Auth.Core.Cryptography;
 
-public static class TokenizerService
+/// <summary>
+/// Service for encrypting and decrypting sensitive data using AES-256 encryption.
+/// </summary>
+public class TokenizerService : ITokenizerService
 {
-    private static readonly byte[] EncryptionKey = Encoding.UTF8.GetBytes("12345678901234567890123456789012");
+    private readonly byte[] _encryptionKey;
 
-    public static string Tokenize(this string? plainText)
+    /// <summary>
+    /// Initializes a new instance of the TokenizerService with a byte array encryption key.
+    /// </summary>
+    /// <param name="encryptionKey">The encryption key (must be exactly 32 bytes for AES-256)</param>
+    /// <exception cref="ArgumentException">Thrown when encryption key is not exactly 32 bytes</exception>
+    public TokenizerService(byte[] encryptionKey)
+    {
+        if (encryptionKey == null || encryptionKey.Length != 32)
+        {
+            throw new ArgumentException("Encryption key must be exactly 32 bytes (256 bits)", nameof(encryptionKey));
+        }
+        
+        _encryptionKey = encryptionKey;
+    }
+
+    /// <summary>
+    /// Initializes a new instance of the TokenizerService with a string encryption key.
+    /// </summary>
+    /// <param name="encryptionKey">The encryption key (will be UTF-8 encoded, must be 32 bytes)</param>
+    /// <exception cref="ArgumentException">Thrown when encryption key is not exactly 32 bytes</exception>
+    public TokenizerService(string encryptionKey)
+        : this(Encoding.UTF8.GetBytes(encryptionKey ?? throw new ArgumentNullException(nameof(encryptionKey))))
+    {
+    }
+
+    /// <inheritdoc/>
+    public string Tokenize(string? plainText)
     {
         if (string.IsNullOrWhiteSpace(plainText))
         {
@@ -15,7 +44,7 @@ public static class TokenizerService
         }
 
         using var aesAlg = Aes.Create();
-        aesAlg.Key = EncryptionKey;
+        aesAlg.Key = _encryptionKey;
         aesAlg.GenerateIV();
         var iv = aesAlg.IV;
         aesAlg.Mode = CipherMode.CBC;
@@ -36,7 +65,8 @@ public static class TokenizerService
         return Convert.ToBase64String(result);
     }
 
-    public static string Detokenize(this string protectedText)
+    /// <inheritdoc/>
+    public string Detokenize(string protectedText)
     {
         if (string.IsNullOrWhiteSpace(protectedText))
         {
@@ -45,7 +75,7 @@ public static class TokenizerService
 
         var fullCipher = Convert.FromBase64String(protectedText);
         using var aesAlg = Aes.Create();
-        aesAlg.Key = EncryptionKey;
+        aesAlg.Key = _encryptionKey;
         var iv = new byte[aesAlg.BlockSize / 8];
         var cipher = new byte[fullCipher.Length - iv.Length];
 
@@ -62,3 +92,4 @@ public static class TokenizerService
         return srDecrypt.ReadToEnd();
     }
 }
+
