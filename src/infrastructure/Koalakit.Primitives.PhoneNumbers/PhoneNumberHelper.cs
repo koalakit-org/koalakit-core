@@ -4,7 +4,7 @@ namespace Koalakit.Primitives.PhoneNumbers;
 
 public static class PhoneNumberHelper
 {
-    private static readonly PhoneNumberUtil phoneNumberUtil = PhoneNumberUtil.GetInstance();
+    static readonly PhoneNumberUtil phoneNumberUtil = PhoneNumberUtil.GetInstance();
 
     public static bool Validate(string? number, string region = "SA")
     {

@@ -3,9 +3,6 @@
 public static class AppClaimNames
 {
     public const string Scope = "scope";
-    public const string ProfileId = "profile-id";
-    public const string AdminId = "admin-id";
-    public const string DeviceId = "device-id";
 
     public static IEnumerable<string> ListAllClaims()
     {

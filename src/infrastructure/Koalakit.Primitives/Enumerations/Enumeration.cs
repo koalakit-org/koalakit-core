@@ -2,16 +2,17 @@ using System.Reflection;
 
 namespace Koalakit.Primitives.Enumerations;
 
-public abstract class Enumeration : IEquatable<Enumeration, TKey>, IComparable<Enumeration>
+public abstract class Enumeration<TId> :
+    IEquatable<Enumeration<TId>>, IComparable<Enumeration<TId>>
+    where TId : IComparable<TId>
 {
-    private static readonly Dictionary<Type, object> _cache = new();
-    private static readonly object _cacheLock = new();
+    static readonly Dictionary<Type, object> _cache = [];
+    static readonly Lock _cacheLock = new();
 
-    public int Id { get; private set; }
+    public TId Id { get; }
+    public string Name { get; }
 
-    public string Name { get; protected set; }
-
-    protected Enumeration(TKey id, string name)
+    protected Enumeration(TId id, string name)
     {
         if (string.IsNullOrWhiteSpace(name))
             throw new ArgumentNullException(nameof(name), "Enumeration name cannot be null or empty.");
@@ -20,119 +21,72 @@ public abstract class Enumeration : IEquatable<Enumeration, TKey>, IComparable<E
         Name = name;
     }
 
-    /// <summary>
-    /// Returns the name of this enumeration value.
-    /// </summary>
     public override string ToString() => Name;
 
-    /// <summary>
-    /// Gets all values of the specified enumeration type.
-    /// </summary>
-    /// <typeparam name="T">The enumeration type.</typeparam>
-    /// <returns>All enumeration values of the specified type.</returns>
-    public static IEnumerable<T> GetAll<T>() where T : Enumeration
+    public static IEnumerable<TEnum> GetAll<TEnum>() where TEnum : Enumeration<TId>
     {
-        var type = typeof(T);
+        var type = typeof(TEnum);
 
         lock (_cacheLock)
         {
             if (!_cache.TryGetValue(type, out var cached))
             {
                 var fields = type.GetFields(BindingFlags.Public |
-                                           BindingFlags.Static |
-                                           BindingFlags.DeclaredOnly);
+                                            BindingFlags.Static |
+                                            BindingFlags.DeclaredOnly);
 
                 cached = fields
                     .Select(f => f.GetValue(null))
-                    .Cast<T>()
+                    .Cast<TEnum>()
                     .OrderBy(e => e.Id)
                     .ToList();
 
                 _cache[type] = cached;
             }
 
-            return (IEnumerable<T>)cached;
+            return (IEnumerable<TEnum>)cached;
         }
     }
 
-    /// <summary>
-    /// Gets an enumeration value by its name (case-insensitive).
-    /// </summary>
-    /// <typeparam name="T">The enumeration type.</typeparam>
-    /// <param name="name">The name to search for.</param>
-    /// <returns>The enumeration value, or null if not found.</returns>
-    public static T? GetByName<T>(string? name) where T : Enumeration
+    public static TEnum? GetByName<TEnum>(string? name) where TEnum : Enumeration<TId>
     {
         if (string.IsNullOrWhiteSpace(name))
-            return null;
+            return default;
 
-        return GetAll<T>()
+        return GetAll<TEnum>()
             .FirstOrDefault(e => string.Equals(e.Name, name, StringComparison.OrdinalIgnoreCase));
     }
 
-    /// <summary>
-    /// Tries to get an enumeration value by its name (case-insensitive).
-    /// </summary>
-    /// <typeparam name="T">The enumeration type.</typeparam>
-    /// <param name="name">The name to search for.</param>
-    /// <param name="enumeration">The found enumeration value, or null if not found.</param>
-    /// <returns>True if found, false otherwise.</returns>
-    public static bool TryGetByName<T>(string? name, out T? enumeration) where T : Enumeration
+    public static bool TryGetByName<TEnum>(string? name, out TEnum? enumeration)
+        where TEnum : Enumeration<TId>
     {
-        enumeration = GetByName<T>(name);
+        enumeration = GetByName<TEnum>(name);
         return enumeration is not null;
     }
 
-    /// <summary>
-    /// Gets an enumeration value by its Id.
-    /// </summary>
-    /// <typeparam name="T">The enumeration type.</typeparam>
-    /// <param name="id">The Id to search for.</param>
-    /// <returns>The enumeration value, or null if not found.</returns>
-    public static T? GetById<T>(int id) where T : Enumeration
+    public static TEnum? GetById<TEnum>(TId id) where TEnum : Enumeration<TId>
     {
-        return GetAll<T>().FirstOrDefault(e => e.Id == id);
+        return GetAll<TEnum>().FirstOrDefault(e => e.Id.CompareTo(id) == 0);
     }
 
-    /// <summary>
-    /// Tries to get an enumeration value by its Id.
-    /// </summary>
-    /// <typeparam name="T">The enumeration type.</typeparam>
-    /// <param name="id">The Id to search for.</param>
-    /// <param name="enumeration">The found enumeration value, or null if not found.</param>
-    /// <returns>True if found, false otherwise.</returns>
-    public static bool TryGetById<T>(int id, out T? enumeration) where T : Enumeration
+    public static bool TryGetById<TEnum>(TId id, out TEnum? enumeration)
+        where TEnum : Enumeration<TId>
     {
-        enumeration = GetById<T>(id);
+        enumeration = GetById<TEnum>(id);
         return enumeration is not null;
     }
 
-    /// <summary>
-    /// Checks if the given name is a valid enumeration value name (case-insensitive).
-    /// </summary>
-    /// <typeparam name="T">The enumeration type.</typeparam>
-    /// <param name="name">The name to validate.</param>
-    /// <returns>True if valid, false otherwise.</returns>
-    public static bool IsValidName<T>(string? name) where T : Enumeration
+    public static bool IsValidName<TEnum>(string? name) where TEnum : Enumeration<TId>
     {
-        return GetByName<T>(name) is not null;
+        return GetByName<TEnum>(name) is not null;
     }
 
-    /// <summary>
-    /// Checks if the given Id is a valid enumeration value Id.
-    /// </summary>
-    /// <typeparam name="T">The enumeration type.</typeparam>
-    /// <param name="id">The Id to validate.</param>
-    /// <returns>True if valid, false otherwise.</returns>
-    public static bool IsValidId<T>(int id) where T : Enumeration
+    public static bool IsValidId<TEnum>(TId id) where TEnum : Enumeration<TId>
     {
-        return GetById<T>(id) is not null;
+        return GetById<TEnum>(id) is not null;
     }
 
-    /// <summary>
-    /// Compares this enumeration to another based on their Ids.
-    /// </summary>
-    public int CompareTo(Enumeration? other)
+    public int CompareTo(Enumeration<TId>? other)
     {
         if (other is null)
             return 1;
@@ -140,10 +94,7 @@ public abstract class Enumeration : IEquatable<Enumeration, TKey>, IComparable<E
         return Id.CompareTo(other.Id);
     }
 
-    /// <summary>
-    /// Determines whether the specified enumeration is equal to the current enumeration.
-    /// </summary>
-    public bool Equals(Enumeration? other)
+    public bool Equals(Enumeration<TId>? other)
     {
         if (other is null)
             return false;
@@ -151,29 +102,21 @@ public abstract class Enumeration : IEquatable<Enumeration, TKey>, IComparable<E
         if (ReferenceEquals(this, other))
             return true;
 
-        return GetType() == other.GetType() && Id == other.Id;
+        return GetType() == other.GetType() &&
+               Id.CompareTo(other.Id) == 0;
     }
 
-    /// <summary>
-    /// Determines whether the specified object is equal to the current enumeration.
-    /// </summary>
     public override bool Equals(object? obj)
     {
-        return obj is Enumeration other && Equals(other);
+        return obj is Enumeration<TId> other && Equals(other);
     }
 
-    /// <summary>
-    /// Returns the hash code for this enumeration.
-    /// </summary>
     public override int GetHashCode()
     {
         return HashCode.Combine(GetType(), Id);
     }
 
-    /// <summary>
-    /// Equality operator.
-    /// </summary>
-    public static bool operator ==(Enumeration? left, Enumeration? right)
+    public static bool operator ==(Enumeration<TId>? left, Enumeration<TId>? right)
     {
         if (left is null && right is null)
             return true;
@@ -184,44 +127,8 @@ public abstract class Enumeration : IEquatable<Enumeration, TKey>, IComparable<E
         return left.Equals(right);
     }
 
-    /// <summary>
-    /// Inequality operator.
-    /// </summary>
-    public static bool operator !=(Enumeration? left, Enumeration? right)
+    public static bool operator !=(Enumeration<TId>? left, Enumeration<TId>? right)
     {
         return !(left == right);
     }
-
-    /// <summary>
-    /// Less than operator.
-    /// </summary>
-    public static bool operator <(Enumeration? left, Enumeration? right)
-    {
-        return left is null ? right is not null : left.CompareTo(right) < 0;
-    }
-
-    /// <summary>
-    /// Less than or equal operator.
-    /// </summary>
-    public static bool operator <=(Enumeration? left, Enumeration? right)
-    {
-        return left is null || left.CompareTo(right) <= 0;
-    }
-
-    /// <summary>
-    /// Greater than operator.
-    /// </summary>
-    public static bool operator >(Enumeration? left, Enumeration? right)
-    {
-        return left is not null && left.CompareTo(right) > 0;
-    }
-
-    /// <summary>
-    /// Greater than or equal operator.
-    /// </summary>
-    public static bool operator >=(Enumeration? left, Enumeration? right)
-    {
-        return left is null ? right is null : left.CompareTo(right) >= 0;
-    }
 }
-
