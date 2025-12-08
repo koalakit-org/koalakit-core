@@ -2,16 +2,17 @@ using System.Reflection;
 
 namespace Koalakit.Primitives.Enumerations;
 
-public abstract class Enumeration : IEquatable<Enumeration>, IComparable<Enumeration>
+public abstract class Enumeration<TId> :
+    IEquatable<Enumeration<TId>>, IComparable<Enumeration<TId>>
+    where TId : IComparable<TId>
 {
     static readonly Dictionary<Type, object> _cache = [];
     static readonly Lock _cacheLock = new();
 
-    public int Id { get; private set; }
+    public TId Id { get; }
+    public string Name { get; }
 
-    public string Name { get; protected set; }
-
-    protected Enumeration(int id, string name)
+    protected Enumeration(TId id, string name)
     {
         if (string.IsNullOrWhiteSpace(name))
             throw new ArgumentNullException(nameof(name), "Enumeration name cannot be null or empty.");
@@ -22,68 +23,70 @@ public abstract class Enumeration : IEquatable<Enumeration>, IComparable<Enumera
 
     public override string ToString() => Name;
 
-    public static IEnumerable<T> GetAll<T>() where T : Enumeration
+    public static IEnumerable<TEnum> GetAll<TEnum>() where TEnum : Enumeration<TId>
     {
-        var type = typeof(T);
+        var type = typeof(TEnum);
 
         lock (_cacheLock)
         {
             if (!_cache.TryGetValue(type, out var cached))
             {
                 var fields = type.GetFields(BindingFlags.Public |
-                                           BindingFlags.Static |
-                                           BindingFlags.DeclaredOnly);
+                                            BindingFlags.Static |
+                                            BindingFlags.DeclaredOnly);
 
                 cached = fields
                     .Select(f => f.GetValue(null))
-                    .Cast<T>()
+                    .Cast<TEnum>()
                     .OrderBy(e => e.Id)
                     .ToList();
 
                 _cache[type] = cached;
             }
 
-            return (IEnumerable<T>)cached;
+            return (IEnumerable<TEnum>)cached;
         }
     }
 
-    public static T? GetByName<T>(string? name) where T : Enumeration
+    public static TEnum? GetByName<TEnum>(string? name) where TEnum : Enumeration<TId>
     {
         if (string.IsNullOrWhiteSpace(name))
-            return null;
+            return default;
 
-        return GetAll<T>()
+        return GetAll<TEnum>()
             .FirstOrDefault(e => string.Equals(e.Name, name, StringComparison.OrdinalIgnoreCase));
     }
 
-    public static bool TryGetByName<T>(string? name, out T? enumeration) where T : Enumeration
+    public static bool TryGetByName<TEnum>(string? name, out TEnum? enumeration)
+        where TEnum : Enumeration<TId>
     {
-        enumeration = GetByName<T>(name);
+        enumeration = GetByName<TEnum>(name);
         return enumeration is not null;
     }
 
-    public static T? GetById<T>(int id) where T : Enumeration
+    public static TEnum? GetById<TEnum>(TId id) where TEnum : Enumeration<TId>
     {
-        return GetAll<T>().FirstOrDefault(e => e.Id == id);
+        return GetAll<TEnum>().FirstOrDefault(e => e.Id.CompareTo(id) == 0);
     }
 
-    public static bool TryGetById<T>(int id, out T? enumeration) where T : Enumeration
+    public static bool TryGetById<TEnum>(TId id, out TEnum? enumeration)
+        where TEnum : Enumeration<TId>
     {
-        enumeration = GetById<T>(id);
+        enumeration = GetById<TEnum>(id);
         return enumeration is not null;
     }
 
-    public static bool IsValidName<T>(string? name) where T : Enumeration
+    public static bool IsValidName<TEnum>(string? name) where TEnum : Enumeration<TId>
     {
-        return GetByName<T>(name) is not null;
+        return GetByName<TEnum>(name) is not null;
     }
 
-    public static bool IsValidId<T>(int id) where T : Enumeration
+    public static bool IsValidId<TEnum>(TId id) where TEnum : Enumeration<TId>
     {
-        return GetById<T>(id) is not null;
+        return GetById<TEnum>(id) is not null;
     }
 
-    public int CompareTo(Enumeration? other)
+    public int CompareTo(Enumeration<TId>? other)
     {
         if (other is null)
             return 1;
@@ -91,7 +94,7 @@ public abstract class Enumeration : IEquatable<Enumeration>, IComparable<Enumera
         return Id.CompareTo(other.Id);
     }
 
-    public bool Equals(Enumeration? other)
+    public bool Equals(Enumeration<TId>? other)
     {
         if (other is null)
             return false;
@@ -99,12 +102,13 @@ public abstract class Enumeration : IEquatable<Enumeration>, IComparable<Enumera
         if (ReferenceEquals(this, other))
             return true;
 
-        return GetType() == other.GetType() && Id == other.Id;
+        return GetType() == other.GetType() &&
+               Id.CompareTo(other.Id) == 0;
     }
 
     public override bool Equals(object? obj)
     {
-        return obj is Enumeration other && Equals(other);
+        return obj is Enumeration<TId> other && Equals(other);
     }
 
     public override int GetHashCode()
@@ -112,7 +116,7 @@ public abstract class Enumeration : IEquatable<Enumeration>, IComparable<Enumera
         return HashCode.Combine(GetType(), Id);
     }
 
-    public static bool operator ==(Enumeration? left, Enumeration? right)
+    public static bool operator ==(Enumeration<TId>? left, Enumeration<TId>? right)
     {
         if (left is null && right is null)
             return true;
@@ -123,7 +127,7 @@ public abstract class Enumeration : IEquatable<Enumeration>, IComparable<Enumera
         return left.Equals(right);
     }
 
-    public static bool operator !=(Enumeration? left, Enumeration? right)
+    public static bool operator !=(Enumeration<TId>? left, Enumeration<TId>? right)
     {
         return !(left == right);
     }

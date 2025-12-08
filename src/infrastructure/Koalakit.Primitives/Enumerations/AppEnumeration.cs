@@ -1,6 +1,6 @@
 namespace Koalakit.Primitives.Enumerations;
 
-public abstract class AppEnumeration(int id, string name) : Enumeration(id, name)
+public abstract class AppEnumeration(int id, string name) : Enumeration<int>(id, name)
 {
     public virtual string GetDisplayName()
     {
